@@ -5,6 +5,8 @@ cat package.json
 echo "INSTALLING SDK DEPENDENCIES"
 yarn
 yarn list --depth=0
+yarn add npm-run-all
+yarn list --depth=0
 # yarn list --pattern npm-run-all
 echo "BUILDING SDK"
 echo "(Hint: We need to do this because we're installing it straight from a GH branch, not from npm.)"
