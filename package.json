@@ -8,9 +8,8 @@
     "start": "next start -p 3001"
   },
   "dependencies": {
-    "@sentry/nextjs": "6.3.3",
-    "@sentry/tracing": "6.3.3",
-    "next": "10.0.8",
+    "@sentry/nextjs": "https://gitpkg.now.sh/getsentry/sentry-javascript/packages/nextjs?kmclb-vercel-dependency-test&scripts.gitpkg=yarn%20%26%26%20yarn%20build",
+    "next": "10.x",
     "react": "17.0.1",
     "react-dom": "17.0.1"
   }
