@@ -1,0 +1,74 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "pwa-node",
+      "request": "launch",
+      "name": "run `next dev`",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "runtimeArgs": ["--preserve-symlinks", "--trace-warnings"],
+      "program": "${workspaceFolder}/node_modules/.bin/next",
+      "args": ["dev", "-p", "3001"],
+      "outFiles": [
+        "${workspaceFolder}/**/*.js"
+      ],
+      "resolveSourceMapLocations": [
+        "${workspaceFolder}/**",
+        "!**/node_modules/**",
+        "${workspaceFolder}/node_modules/next/dist/**"
+      ],
+      "internalConsoleOptions": "openOnSessionStart"
+    },
+    {
+      "type": "pwa-node",
+      "request": "launch",
+      "name": "run `next start`",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "runtimeArgs": ["--preserve-symlinks", "--trace-warnings"],
+      "program": "${workspaceFolder}/node_modules/.bin/next",
+      "args": ["start", "-p", "3001"],
+      "outFiles": [
+        "${workspaceFolder}/**/*.js",
+        "!${workspaceFolder}/node_moduges/next/**/*.js",
+      ],
+      "resolveSourceMapLocations": [
+        "${workspaceFolder}/**",
+        "!**/node_modules/**",
+        "${workspaceFolder}/node_modules/next/dist/**",
+        "${workspaceFolder}/node_modules/@sentry/**"
+      ],
+      "preLaunchTask": "yarn build",
+      "internalConsoleOptions": "openOnSessionStart"
+    },
+    {
+      "type": "pwa-node",
+      "request": "launch",
+      "name": "run `next build`",
+      // "skipFiles": [
+      //   "<node_internals>/**"
+      // ],
+      "runtimeArgs": ["--preserve-symlinks", "--trace-warnings"],
+      "program": "${workspaceFolder}/node_modules/.bin/next",
+      "args": ["build"],
+      "outFiles": [
+        "${workspaceFolder}/**/*.js",
+        "!${workspaceFolder}/node_modules/**/*.js",
+        "${workspaceFolder}/node_modules/@sentry/**/*.js",
+        "${workspaceFolder}/node_modules/next/**/*.js",
+      ],
+      "resolveSourceMapLocations": [
+        "${workspaceFolder}/**",
+        "!**/node_modules/**",
+        "${workspaceFolder}/node_modules/next/dist/**"
+      ],
+      "internalConsoleOptions": "openOnSessionStart"
+    }
+  ]
+}
