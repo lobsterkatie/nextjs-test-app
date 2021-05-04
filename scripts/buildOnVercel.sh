@@ -14,7 +14,7 @@ for package in "types" "utils" "hub" "core", "minimal" "browser" "node" "react" 
   # ${var-name:u} converts to uppercase in zsh (can also do ${(U)var-name},
   # and the same works with l/L for lowercase)
   echo "\n\n***** @SENTRY/${package:u} *****\n"
-  cd node_modules/${package}
+  cd node_modules/@sentry/${package}
   # echo "\n Deleting node_modules\n"
   # yarn
   yarn build
