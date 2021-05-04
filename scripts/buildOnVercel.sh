@@ -18,6 +18,7 @@ for package in "types" "utils" "hub" "core", "minimal" "browser" "node" "react" 
   cd node_modules/@sentry/${package}
   # echo "\n Deleting node_modules\n"
   # yarn
+  yarn --prod false
   yarn build
   cd -
 done
