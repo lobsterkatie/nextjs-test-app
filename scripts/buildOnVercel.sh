@@ -10,15 +10,15 @@ yarn list --depth=0
 # yarn add npm-run-all
 # yarn list --depth=0
 # yarn list --pattern npm-run-all
-for package in ("types" "utils" "hub" "core", "minimal" "browser" "node" "react" "integrations"); do
-    # ${var-name:u} converts to uppercase in zsh (can also do ${(U)var-name},
-    # and the same works with l/L for lowercase)
-    echo "\n\n***** @SENTRY/${package:u} *****\n"
-    cd node_modules/${package}
-    # echo "\n Deleting node_modules\n"
-    # yarn
-    yarn build
-    cd -
+for package in "types" "utils" "hub" "core", "minimal" "browser" "node" "react" "integrations"; do
+  # ${var-name:u} converts to uppercase in zsh (can also do ${(U)var-name},
+  # and the same works with l/L for lowercase)
+  echo "\n\n***** @SENTRY/${package:u} *****\n"
+  cd node_modules/${package}
+  # echo "\n Deleting node_modules\n"
+  # yarn
+  yarn build
+  cd -
 done
 echo "BUILDING SDK"
 echo "(Hint: We need to do this because we're installing it straight from a GH branch, not from npm.)"
