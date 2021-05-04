@@ -6,7 +6,8 @@ cd node_modules/@sentry/nextjs
 echo "INSTALLING SDK DEPENDENCIES"
 # this makes it install dev dependencies, which we need for building
 yarn --prod false
-yarn list --depth=0
+ls -l node_modules/@sentry
+# yarn list --depth=0
 # yarn add npm-run-all
 # yarn list --depth=0
 # yarn list --pattern npm-run-all
