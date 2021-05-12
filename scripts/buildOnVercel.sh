@@ -11,6 +11,7 @@ echo "  "
 # this makes it install dev dependencies, which we need for building
 yarn --prod false
 ls -l node_modules/@sentry
+yarn list --pattern \@types
 # yarn list --depth=0
 # yarn add npm-run-all
 # yarn list --depth=0
@@ -30,12 +31,13 @@ for package in "types" "utils" "hub" "minimal" "core" "browser" "tracing" "node"
   cd -
 done
 
-yarn list --pattern \@sentry
-yarn why \@sentry/types
+yarn list --pattern \@types
+yarn why \@types/cookie
 ls -l node_modules/@sentry
-ls -l node_modules/@sentry/react
-ls -l node_modules/@sentry/react
+# ls -l node_modules/@sentry/react
+# ls -l node_modules/@sentry/react/
 ls -l node_modules/@sentry/node/node_modules/@sentry
+ls -l node_modules/@sentry/node/node_modules/@types
 echo "  "
 echo "BUILDING SDK"
 echo "(Hint: We need to do this because we're installing it straight from a GH branch, not from npm.)"
