@@ -1,4 +1,5 @@
 # yarn list --pattern npm-run-all
+yarn list --pattern \@types
 echo "  "
 echo "CD-ING INTO NODE_MODULES/@SENTRY/NEXTJS"
 echo "  "
@@ -12,7 +13,7 @@ echo "  "
 yarn --prod false
 ls -l node_modules/@sentry
 yarn list --pattern \@types
-# yarn list --depth=0
+yarn list --depth=0
 # yarn add npm-run-all
 # yarn list --depth=0
 # yarn list --pattern npm-run-all
