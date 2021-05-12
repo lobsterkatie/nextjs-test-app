@@ -16,23 +16,25 @@ ls -l node_modules/@sentry
 # yarn list --depth=0
 # yarn list --pattern npm-run-all
 
-# for package in "types" "utils" "hub" "minimal" "core" "browser" "tracing" "node" "react" "integrations"; do
-#   # ${var-name:u} converts to uppercase in zsh (can also do ${(U)var-name},
-#   # and the same works with l/L for lowercase)
-#   echo "  "
-#   echo "***** @SENTRY/${package:u} *****"
-#   echo "  "
-#   cd node_modules/@sentry/${package}
-#   # echo "\n Deleting node_modules\n"
-#   # yarn
-#   yarn --prod false
-#   yarn build
-#   cd -
-# done
+for package in "types" "utils" "hub" "minimal" "core" "browser" "tracing" "node" "react" "integrations"; do
+  # ${var-name:u} converts to uppercase in zsh (can also do ${(U)var-name},
+  # and the same works with l/L for lowercase)
+  echo "  "
+  echo "***** @SENTRY/${package:u} *****"
+  echo "  "
+  cd node_modules/@sentry/${package}
+  # echo "\n Deleting node_modules\n"
+  # yarn
+  yarn --prod false
+  # yarn build
+  cd -
+done
 
 yarn list --pattern \@sentry
 yarn why \@sentry/types
 ls -l node_modules/@sentry
+ls -l node_modules/@sentry/react
+ls -l node_modules/@sentry/react
 ls -l node_modules/@sentry/node/node_modules/@sentry
 echo "  "
 echo "BUILDING SDK"
