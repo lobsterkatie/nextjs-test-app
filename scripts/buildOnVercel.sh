@@ -14,8 +14,8 @@ ls -l node_modules/@sentry
 for package in "types" "utils" "hub" "minimal" "core" "browser" "tracing" "node" "react" "integrations"; do
   # ${var-name:u} converts to uppercase in zsh (can also do ${(U)var-name},
   # and the same works with l/L for lowercase)
-  echo
-  echo
+  echo "  "
+  echo "  "
   echo "***** @SENTRY/${package:u} *****\n"
   cd node_modules/@sentry/${package}
   # echo "\n Deleting node_modules\n"
@@ -26,6 +26,8 @@ for package in "types" "utils" "hub" "minimal" "core" "browser" "tracing" "node"
 done
 yarn list --pattern \@sentry
 yarn why \@sentry/types
+ls -l node_modules/@sentry
+ls -l node_modules/@sentry/node/node_modules/@sentry
 echo "BUILDING SDK"
 echo "(Hint: We need to do this because we're installing it straight from a GH branch, not from npm.)"
 yarn build
