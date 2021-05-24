@@ -4,7 +4,7 @@ import * as Sentry from "@sentry/nextjs";
 
 const handler = async (req, res) => {
   console.log(
-    "\nI'm in the api route. Client defined:",
+    "\nI'm in the innerAPIParam route. Client defined:",
     Sentry.getCurrentHub().getClient() !== undefined
   );
   // throw new Error("in API route");

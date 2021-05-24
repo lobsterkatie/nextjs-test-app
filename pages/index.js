@@ -19,7 +19,7 @@ import {
 import { LoadNewPageLink } from "../components/loadnewpagelink";
 console.log("here!");
 
-Sentry.captureMessage("hi");
+// Sentry.captureMessage("hi");
 console.log(
   "in index.js Client defined:",
   Sentry.getCurrentHub().getClient() !== undefined
@@ -47,7 +47,13 @@ export default function Home() {
         >
           Click me for an unhandled promise rejection
         </button>
-        <button id="fetch-button" onClick={() => outerFunc(fetchCallback)}>
+        <button
+          id="fetch-button"
+          onClick={() => {
+            console.log("clicked the fetch button");
+            return outerFunc(fetchCallback);
+          }}
+        >
           Click me to make a fetch request transaction
         </button>
         <button

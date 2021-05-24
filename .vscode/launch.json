@@ -36,7 +36,7 @@
       "args": ["start", "-p", "3001"],
       "outFiles": [
         "${workspaceFolder}/**/*.js",
-        "!${workspaceFolder}/node_moduges/next/**/*.js",
+        "!${workspaceFolder}/node_modules/next/**/*.js",
       ],
       "resolveSourceMapLocations": [
         "${workspaceFolder}/**",

@@ -33,19 +33,57 @@ export const promiseRejectionCallback = () => {
 };
 
 export const fetchCallback = async () => {
-  const transaction = Sentry.startTransaction({ name: "fetch button click" });
-  Sentry.getCurrentHub().getScope()?.setSpan(transaction);
-  // fetch("/bunch-of-json.json")
-  //   .then((response) => response.json())
-  //   .then((data) => console.log(data));
-  await fetch("http://127.0.0.1:3000/api/hello/")
-    .then((response) => response.json())
-    .then((json) => console.log("JSON returned from server:", json))
-    .catch((err) => Sentry.captureException(err));
-  console.log("after the fetch");
-  // .then((response) => response.json())
-  // .then((data) => console.log(data));
+  console.log("in fetchCallback!");
+  const transaction = Sentry.startTransaction({
+    name: "/test/trace/continuation",
+  });
+  Sentry.getCurrentHub().getScope().setSpan(transaction);
+
+  [
+    // "aardvark",
+    // "bear",
+    // "canary",
+    // "donkey",
+    // "elephant",
+    // "frog",
+    // "giraffe",
+    // "hippo",
+    // "iguana",
+    // "jaguar",
+    // "kangaroo",
+    // "lemur",
+    // "manatee",
+    // "narwhal",
+    // "opossum",
+    // "penguin",
+    // "quail",
+    // "rattlesnake",
+    // "serval",
+    // "tiger",
+    // "unicorn",
+    // "vulture",
+    // "wallaby",
+    // "xantus",
+    // "yak",
+    // "zebra",
+  ].forEach((animal) => fetch(`/api/${animal}/facts?hi=hello`));
+  await fetch(`/api/${"maisey"}/facts?hi=hello`);
   transaction.finish();
+  console.log("transaction trace ID:", transaction.traceId);
+  // fetch("/api/hello");
+  // const transaction = Sentry.startTransaction({ name: "fetch button click" });
+  // Sentry.getCurrentHub().getScope()?.setSpan(transaction);
+  // // fetch("/bunch-of-json.json")
+  // //   .then((response) => response.json())
+  // //   .then((data) => console.log(data));
+  // await fetch("http://127.0.0.1:3000/api/hello/")
+  //   .then((response) => response.json())
+  //   .then((json) => console.log("JSON returned from server:", json))
+  //   .catch((err) => Sentry.captureException(err));
+  // console.log("after the fetch");
+  // // .then((response) => response.json())
+  // // .then((data) => console.log(data));
+  // transaction.finish();
 };
 
 export const erroringTransactionCallback = () => {

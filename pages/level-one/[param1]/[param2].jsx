@@ -4,7 +4,7 @@ import * as nextRouter from "next/router";
 import { LoadNewPageLink } from "../../../components/loadnewpagelink";
 import * as Sentry from "@sentry/nextjs";
 
-export default function LevelOneParam1Param2(color) {
+export default function LevelOneParam1Param2() {
   const homeURL = "/";
   const router = nextRouter.useRouter();
   console.log(
@@ -41,4 +41,8 @@ export default function LevelOneParam1Param2(color) {
 //     props: { color: "red" },
 //     revalidate: 1,
 //   };
+// }
+
+// export async function getStaticPaths() {
+//   return { paths: ["/level-one/cow/donkey"], fallback: false };
 // }

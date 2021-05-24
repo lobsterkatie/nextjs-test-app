@@ -27,12 +27,12 @@ export async function getStaticProps() {
     Sentry.getCurrentHub().getClient() !== undefined
   );
   console.log("x = ", x);
-  // if (x > 1) {
-  //   console.log("about to throw error");
-  //   const err = new Error("in in getStaticProps for OtherPage");
-  //   console.log(err.stack);
-  //   throw err;
-  // }
+  if (x > 1) {
+    console.log("about to throw error");
+    const err = new Error("in in getStaticProps for OtherPage");
+    // console.log(err.stack);
+    throw err;
+  }
   // console.log(
   //   "Sentry client defined:",
   //   Sentry.getCurrentHub().getClient() !== undefined

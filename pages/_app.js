@@ -36,11 +36,12 @@ function MyApp({ Component, pageProps }) {
   //   Sentry.getCurrentHub().getClient() !== undefined
   // );
   // throw new Error("inside MyApp");
-  return (
-    <Sentry.ErrorBoundary fallback={"An error has occurred"}>
-      <Component {...pageProps} />
-    </Sentry.ErrorBoundary>
-  );
+  // return (
+  //   <Sentry.ErrorBoundary fallback={"An error has occurred"}>
+  //     <Component {...pageProps} />
+  //   </Sentry.ErrorBoundary>
+  // );
+  return <Component {...pageProps} />;
 }
 
 // console.log(
