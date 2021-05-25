@@ -36,7 +36,6 @@ for package in "cli" "webpack-plugin" "types" "utils" "hub" "minimal" "core" "br
   cd node_modules/@sentry/${package}
   yarn --prod false
   rm -rf node_modules/@sentry
-  rm -rf node_modules/webpack
   yarn build:es5
   yarn build:esm
   cd -
