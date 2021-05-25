@@ -35,6 +35,7 @@ for package in "types" "utils" "hub" "minimal" "core" "browser" "tracing" "node"
   echo "  "
   cd node_modules/@sentry/${package}
   yarn --prod false
+  rm -rf node_modules/@sentry
   yarn build
   cd -
 done
