@@ -27,7 +27,7 @@ yarn list --depth=0
 # yarn list --pattern npm-run-all
 
 # for package in "types" "utils" "hub" "minimal" "core" "browser" "tracing" "node" "react" "integrations"; do
-for package in "types" "utils" "hub" "minimal" "core" "browser" "tracing" "node" "react" "integrations" "nextjs"; do
+for package in "cli" "webpack-plugin" "types" "utils" "hub" "minimal" "core" "browser" "tracing" "node" "react" "integrations" "nextjs"; do
   # ${var-name:u} converts to uppercase in zsh (can also do ${(U)var-name},
   # and the same works with l/L for lowercase)
   echo "  "
@@ -36,7 +36,8 @@ for package in "types" "utils" "hub" "minimal" "core" "browser" "tracing" "node"
   cd node_modules/@sentry/${package}
   yarn --prod false
   rm -rf node_modules/@sentry
-  yarn build
+  yarn build:es5
+  yarn build:esm
   cd -
 done
 
