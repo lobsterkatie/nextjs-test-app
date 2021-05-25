@@ -33,11 +33,24 @@ for package in "cli" "webpack-plugin" "types" "utils" "hub" "minimal" "core" "br
   echo "  "
   echo "***** @SENTRY/${package:u} *****"
   echo "  "
+
+  # this is the project's main `node_moules` folder
   cd node_modules/@sentry/${package}
+
+  # we need dev dependencies in order to build the package
   yarn --prod false
+
+  # Each package will put other sentry packages in its node_modules. In order to avoid building a bunch of copies of the same package,
+  # we always want it to use the copy in the project's main node_moudules, but the package we're building won't look to its siblings
+  # if it has the necessary thing itself. So we make sure it doesn't.
   rm -rf node_modules/@sentry
+
+  # this errors for a few packages which don't have such commands, but that’s fine (not using `yarn build` here in order to avoid
+  # creating rollup bundles, which are slowwwwwww)
   yarn build:es5
   yarn build:esm
+
+  # back to the project root
   cd -
 done
 
