@@ -76,4 +76,6 @@
 # echo "  "
 # yarn build
 
+which unzip
+
 yarn build

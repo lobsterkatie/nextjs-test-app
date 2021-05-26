@@ -7,7 +7,6 @@ Sentry.init({
   debug: true,
   // release: "off.leash.trail",
   tracesSampleRate: 1,
-  tracingOrigins: ["*"],
   autoSessionTracking: false,
   integrations: [new SentryTracing.Integrations.BrowserTracing()],
   beforeSend: (event) => {
@@ -20,5 +19,3 @@ Sentry.init({
 });
 
 Sentry.init();
-
-// NEED BROWSER TRACING INTEGRATION!!
