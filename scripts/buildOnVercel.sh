@@ -76,6 +76,7 @@
 # echo "  "
 # yarn build
 
-which unzip
-
-yarn build
+# git clone https://github.com/getsentry/sentry-javascript#${BRANCH_NAME}
+# cd sentry-javascript
+# yarn --prod false
+# yarn build
