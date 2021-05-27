@@ -15,7 +15,6 @@ yarn --prod false
 yarn build:es5
 
 ls -l node_modules/@sentry
-exit 1
 
 cd $PROJECT_DIR
 
@@ -53,3 +52,6 @@ for package in "cli" "webpack-plugin"; do
   cd $PROJECT_DIR
   yarn link "@sentry/$package"
 done
+
+ls -l node_modules/@sentry
+exit 1
