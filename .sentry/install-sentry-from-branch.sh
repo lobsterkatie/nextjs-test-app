@@ -54,4 +54,6 @@ for package in "cli" "webpack-plugin"; do
 done
 
 ls -l node_modules/@sentry
+echo " "
+ls -l ../../../.config/yarn/link/@sentry
 exit 1
