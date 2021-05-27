@@ -13,6 +13,10 @@ cd sentry-javascript
 git checkout $BRANCH_NAME
 yarn --prod false
 yarn build:es5
+
+ls -l node_modules/@sentry
+exit 1
+
 cd $PROJECT_DIR
 
 # for abs_package_path in ${PROJECT_DIR}/sentry-javascript/packages/*; do
@@ -20,6 +24,12 @@ cd $PROJECT_DIR
 # link the built packages into project dependencies
 for abs_package_path in sentry-javascript/packages/*; do
   package=$(basename $abs_package_path)
+
+  # this one will error out because it's not called @sentry/typescript, it's
+  # called @sentry-internal/typescript, but we don't need it, so just move on
+  if [ "$package" = "typescript" ]; then
+    continue
+  fi
 
   echo " "
   echo "Linking @sentry/${package}"
