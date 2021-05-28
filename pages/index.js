@@ -71,14 +71,22 @@ export default function Home() {
           to link to another page using an LoadNewPageLink.
         </button>
         <button
-          id="link-to-other-page"
+          id="link-to-other-page-with-link-component"
           // onClick={() => outerFunc(linkToOtherPageCallback)}
         >
-          I'm a next-provided
           <Link href="/level-one/other-page">
-            <a>Link</a>
+            <a>I'm a next-provided Link to the other page.</a>
           </Link>
-          to the other page.
+        </button>
+        <button id="client-bundle">
+          <Link href="/client.html">
+            <a>See the client bundle analysis.</a>
+          </Link>
+        </button>
+        <button id="server-bundle">
+          <Link href="/server.html">
+            <a>See the server bundle analysis.</a>
+          </Link>
         </button>
         <br />
         <br />
