@@ -13,6 +13,8 @@ import * as Sentry from "@sentry/nextjs";
 
 import * as nextRouter from "next/router";
 
+import piglatin from "pig-latin";
+
 // init({
 //   dsn:
 //     "https://c3d3206b71704aebbe717d5d4dbfe0bd@o87286.ingest.sentry.io/5397699",
@@ -24,7 +26,7 @@ import * as nextRouter from "next/router";
 
 function MyApp({ Component, pageProps }) {
   console.log(
-    "\nI'm in MyApp, about to render the app. Client defined:",
+    `\n${piglatin("I'm in MyApp, about to render the app.")} Client defined:`,
     Sentry.getCurrentHub().getClient() !== undefined
     // sentryServerConfig.num
   );
