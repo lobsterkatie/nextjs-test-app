@@ -66,7 +66,8 @@
       "resolveSourceMapLocations": [
         "${workspaceFolder}/**",
         "!**/node_modules/**",
-        "${workspaceFolder}/node_modules/next/dist/**"
+        "${workspaceFolder}/node_modules/next/dist/**",
+        "${workspaceFolder}/node_modules/@sentry/*/dist/**"
       ],
       "internalConsoleOptions": "openOnSessionStart"
     }

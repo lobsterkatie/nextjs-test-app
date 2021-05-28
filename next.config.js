@@ -4,6 +4,7 @@
 // https://docs.sentry.io/platforms/javascript/guides/nextjs/
 
 const { withSentryConfig } = require("@sentry/nextjs");
+const withBundleAnalyzer = require("@next/bundle-analyzer")();
 
 const moduleExports = {
   // your existing module.exports
@@ -25,4 +26,6 @@ const SentryWebpackPluginOptions = {
 
 // Make sure adding Sentry options is the last code to run before exporting, to
 // ensure that your source maps include changes from all other Webpack plugins
-module.exports = withSentryConfig(moduleExports, SentryWebpackPluginOptions);
+module.exports = withBundleAnalyzer(
+  withSentryConfig(moduleExports, SentryWebpackPluginOptions)
+);
