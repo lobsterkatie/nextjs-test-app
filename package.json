@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@sentry/nextjs": "6.5.0-beta.1",
-    "next": "10.x",
+    "next": "10.2",
     "react": "17.0.1",
     "react-dom": "17.0.1"
   },
