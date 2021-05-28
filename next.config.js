@@ -7,7 +7,9 @@ const { withSentryConfig } = require("@sentry/nextjs");
 const withBundleAnalyzer = require("@next/bundle-analyzer")();
 
 const moduleExports = {
-  // your existing module.exports
+  future: {
+    webpack5: true,
+  },
 };
 
 const SentryWebpackPluginOptions = {
