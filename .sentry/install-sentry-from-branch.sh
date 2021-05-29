@@ -9,7 +9,7 @@ PROJECT_DIR=$(pwd)
 source .sentry/set-branch-name.sh
 
 echo " "
-echo "CLONING SDK REPO"
+echo "CLONING SDK REPO\n"
 git clone https://github.com/getsentry/sentry-javascript.git
 cd sentry-javascript
 git checkout $BRANCH_NAME
@@ -21,8 +21,8 @@ echo "INSTALLING SDK DEPENDENCIES"
 yarn --prod false
 
 echo " "
-echo "** BUILDING SDK **"
-yarn build:es5
+echo "BUILDING SDK"
+# yarn build:es5
 yarn build:esm
 cd $PROJECT_DIR
 
