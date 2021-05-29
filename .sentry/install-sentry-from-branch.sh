@@ -22,7 +22,10 @@ yarn --prod false
 
 echo " "
 echo "BUILDING SDK"
-# yarn build:es5
+# we need to build es5 versions because `next.config.js` calls `require` on the SDK (to get `withSentryConfig`) and
+# therefore it looks for `dist/index.js`
+yarn build:es5
+# we need to build esm versions because that's what `next` actually uses when it builds the app
 yarn build:esm
 cd $PROJECT_DIR
 
