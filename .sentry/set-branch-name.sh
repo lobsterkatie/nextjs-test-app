@@ -1,1 +1,1 @@
-export BRANCH_NAME=kmclb-nextjs-vercel-take-two
+export BRANCH_NAME=kmclb-deploy-branch-on-vercel
