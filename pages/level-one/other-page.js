@@ -30,7 +30,7 @@ export async function getStaticProps() {
   if (x > 1) {
     console.log("about to throw error");
     const err = new Error("in in getStaticProps for OtherPage");
-    // console.log(err.stack);
+    console.log(err.stack);
     throw err;
   }
   // console.log(
