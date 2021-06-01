@@ -12,7 +12,8 @@ echo " "
 echo "CLONING SDK REPO"
 git clone https://github.com/getsentry/sentry-javascript.git
 cd sentry-javascript
-git checkout $BRANCH_NAME
+# git checkout $BRANCH_NAME
+git checkout 9ee88f5f0c45bbb712b5c1c4e558f7981aeddb27
 echo "Latest commit: $(git log --format="%C(auto) %h - %s" | head -n 1)"
 
 echo " "
