@@ -9,7 +9,7 @@ PROJECT_DIR=$(pwd)
 source .sentry/set-branch-name.sh
 
 echo " "
-echo -e "CLONING SDK REPO\n"
+echo "CLONING SDK REPO"
 git clone https://github.com/getsentry/sentry-javascript.git
 cd sentry-javascript
 git checkout $BRANCH_NAME
