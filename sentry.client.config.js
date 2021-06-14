@@ -17,5 +17,3 @@ Sentry.init({
     return event;
   },
 });
-
-Sentry.init();

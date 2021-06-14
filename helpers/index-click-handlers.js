@@ -67,7 +67,16 @@ export const fetchCallback = async () => {
     // "yak",
     // "zebra",
   ].forEach((animal) => fetch(`/api/${animal}/facts?hi=hello`));
-  await fetch(`/api/${"maisey"}/facts?hi=hello`);
+  const body = new FormData();
+  body.set("exploding", "pizza");
+  body.set("gold", "fish");
+  await fetch(`/api/${"maisey"}/facts?hi=hello`, {
+    method: "POST",
+    // body: new Blob(["zebra", "koala"]),
+    // body,
+    body: JSON.stringify({ exploding: "pizza", gold: "fish" }),
+    headers: { "Content-Type": "application/json" },
+  });
   transaction.finish();
   console.log("transaction trace ID:", transaction.traceId);
   // fetch("/api/hello");

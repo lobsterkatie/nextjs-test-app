@@ -26,10 +26,12 @@ const SentryWebpackPluginOptions = {
   org: "testorg-az",
   url: "https://sentry.io/",
   project: "kmclb-js",
+  silent: true,
 };
 
 // Make sure adding Sentry options is the last code to run before exporting, to
 // ensure that your source maps include changes from all other Webpack plugins
-module.exports = withBundleAnalyzer(
-  withSentryConfig(moduleExports, SentryWebpackPluginOptions)
-);
+module.exports = withSentryConfig(moduleExports, SentryWebpackPluginOptions);
+// module.exports = withBundleAnalyzer(
+//   withSentryConfig(moduleExports, SentryWebpackPluginOptions)
+// );
