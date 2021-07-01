@@ -18,11 +18,14 @@ import {
 } from "../helpers/index-click-handlers";
 import { LoadNewPageLink } from "../components/loadnewpagelink";
 
+Error.stackTraceLimit = Infinity;
+
 // Sentry.captureMessage("hi");
 console.log(
   "in index.js Client defined:",
   Sentry.getCurrentHub().getClient() !== undefined
 );
+console.log(new Error("index page error").stack);
 
 export default function Home() {
   // console.log("in the Home render function");
