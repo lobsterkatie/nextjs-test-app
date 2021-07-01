@@ -1,6 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
 import * as Sentry from "@sentry/nextjs";
+Error.stackTraceLimit = Infinity;
 
 const handler = async (req, res) => {
   console.log(
