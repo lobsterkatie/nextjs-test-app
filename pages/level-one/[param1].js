@@ -5,13 +5,11 @@ import { useRouter } from "next/router";
 import { LoadNewPageLink } from "../../components/loadnewpagelink";
 import * as Sentry from "@sentry/nextjs";
 
-// console.log(NextLink);
 
 export default function Param1Page() {
   const homeURL = "/";
   const router = useRouter();
   console.log("I'm in Param1Page");
-  console.log(router);
   return (
     <div>
       This is the dynamic route `level-one/[param1]` Click

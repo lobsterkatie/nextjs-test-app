@@ -20,7 +20,7 @@ export function LoadNewPageLink({ children, href, color }) {
 
     // const currentLocation = window.location.href;
     setTimeout(() => {
-      console.log(`I'm in the setTimeout handler, about to go to ${href}`);
+      // console.log(`I'm in the setTimeout handler, about to go to ${href}`);
       router.push(href);
     }, 10000);
   };

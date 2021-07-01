@@ -17,7 +17,6 @@ import {
   linkToOtherPageCallback,
 } from "../helpers/index-click-handlers";
 import { LoadNewPageLink } from "../components/loadnewpagelink";
-console.log("here!");
 
 // Sentry.captureMessage("hi");
 console.log(
@@ -26,7 +25,7 @@ console.log(
 );
 
 export default function Home() {
-  console.log("in the Home render function");
+  // console.log("in the Home render function");
   return (
     <div className={styles.container}>
       <Head>
@@ -50,7 +49,7 @@ export default function Home() {
         <button
           id="fetch-button"
           onClick={() => {
-            console.log("clicked the fetch button");
+            // console.log("clicked the fetch button");
             return outerFunc(fetchCallback);
           }}
         >
@@ -136,7 +135,7 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{" "}
+          Powered by{" dogs!! "}
           <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
         </a>
       </footer>

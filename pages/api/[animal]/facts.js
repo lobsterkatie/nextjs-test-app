@@ -20,11 +20,6 @@ const handler = async (req, res) => {
     "\nI'm in the animal facts api route. Client defined:",
     Sentry.getCurrentHub().getClient() !== undefined
   );
-  console.log(Object.keys(req.socket));
-  console.log(typeof req.body);
-  console.log(req.body);
-  // console.log(JSON.parse(req.body));
-  console.log("cwd", process.cwd());
   console.log(new Error("").stack);
   // throw new Error("in API route");
   await fetch(`http://www.nyt.com?animal=${req.query.animal}`);

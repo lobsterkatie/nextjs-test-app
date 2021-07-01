@@ -30,7 +30,6 @@ function MyApp({ Component, pageProps }) {
     Sentry.getCurrentHub().getClient() !== undefined
     // sentryServerConfig.num
   );
-  // Sentry.captureException(new Error("in MyApp component"));
   // console.log(new Error("in MyApp component").stack);
   // console.log(Component);
   // console.log(

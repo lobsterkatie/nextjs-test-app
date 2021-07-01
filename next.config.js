@@ -9,9 +9,9 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")();
 console.log("in next.config.js");
 
 const moduleExports = {
-  future: {
-    webpack5: true,
-  },
+  // future: {
+  //   webpack5: true,
+  // },
 };
 
 const SentryWebpackPluginOptions = {
@@ -26,7 +26,7 @@ const SentryWebpackPluginOptions = {
   org: "testorg-az",
   url: "https://sentry.io/",
   project: "kmclb-js",
-  silent: true,
+  // silent: true,
 };
 
 // Make sure adding Sentry options is the last code to run before exporting, to

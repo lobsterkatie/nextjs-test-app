@@ -9,11 +9,7 @@ export const messageCallback = () => {
 export const errorCallback = () => {
   // throw new Error("koala");
   try {
-    // throw new Error("koala");
-    throw new DOMException(
-      "with stack, in try w captureException",
-      "AbortError"
-    );
+    throw new Error("koala");
   } catch (err) {
     Sentry.captureException(err);
   }
@@ -78,7 +74,7 @@ export const fetchCallback = async () => {
     headers: { "Content-Type": "application/json" },
   });
   transaction.finish();
-  console.log("transaction trace ID:", transaction.traceId);
+  // console.log("transaction trace ID:", transaction.traceId);
   // fetch("/api/hello");
   // const transaction = Sentry.startTransaction({ name: "fetch button click" });
   // Sentry.getCurrentHub().getScope()?.setSpan(transaction);

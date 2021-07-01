@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@sentry/nextjs": "6.x",
-    "next": "10.x",
+    "next": "11.x",
     "pig-latin": "^2.0.2",
     "react": "17.0.1",
     "react-dom": "17.0.1"
