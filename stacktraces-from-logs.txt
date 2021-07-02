@@ -1,0 +1,13 @@
+Memory Used:
+99 MB
+ID:
+56xvk-1625113465211-262c174f1c4c
+User Agent:
+Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36
+(/var/task/node_modules/@sentry/nextjs/node_modules/@sentry/utils/dist/object.js:24:19)
+    at Object.instrumentServer (/var/task/node_modules/@sentry/nextjs/dist/utils/instrumentServer.js:50:13)
+    at Object.<anonymous> (/var/task/node_modules/@sentry/nextjs/dist/index.server.js:52:20)
+    at Module._compile (internal/modules/cjs/loader.js:1068:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1097:10)
+    at Module.load (internal/modules/cjs/loader.js:933:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:774:14)
