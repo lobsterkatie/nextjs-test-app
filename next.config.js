@@ -9,9 +9,13 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")();
 console.log("in next.config.js");
 
 const moduleExports = {
+  // in next 10, to force webpack 5
   // future: {
   //   webpack5: true,
   // },
+
+  // in next 11, to force webpack 4
+  webpack5: false,
 };
 
 const SentryWebpackPluginOptions = {
@@ -22,7 +26,7 @@ const SentryWebpackPluginOptions = {
   //   urlPrefix, include, ignore
   // For all available options, see:
   // https://github.com/getsentry/sentry-webpack-plugin#options.
-  dryRun: true,
+  // dryRun: true,
   org: "testorg-az",
   url: "https://sentry.io/",
   project: "kmclb-js",
