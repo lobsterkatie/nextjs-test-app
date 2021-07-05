@@ -1,1 +1,1 @@
-export BRANCH_NAME=nextjs-debug-backend-transactions
+export BRANCH_NAME=kmclb-nextjs-use-dependon-for-server-init
