@@ -4,7 +4,7 @@ import * as Sentry from "@sentry/nextjs";
 Error.stackTraceLimit = Infinity;
 
 async function stuff() {
-  let counter = 5;
+  let counter = 2;
   while (counter > 0) {
     setTimeout(() => {
       counter -= 1;
