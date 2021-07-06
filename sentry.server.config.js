@@ -21,6 +21,11 @@ Sentry.init({
   ],
   beforeSend: (event) => {
     console.log("in server beforeSend!");
+    try {
+      console.log("Exception:", event.exception.values[0].value);
+    } catch (error) {
+      // pass
+    }
     // return null;
     // console.log(event);
     event.fingerprint = [Date.now()];
