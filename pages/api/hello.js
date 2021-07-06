@@ -22,8 +22,8 @@ const handler = async (req, res) => {
     Sentry.getCurrentHub().getClient() !== undefined
   );
   // throw new Error("in /hello API route");
-  Sentry.captureException(new Error("in /hello API route"));
-  Sentry.captureException(new Error("in /hello API route 2"));
+  // Sentry.captureException(new Error("in /hello API route"));
+  // Sentry.captureException(new Error("in /hello API route 2"));
   // console.log("stack", new Error("").stack);
   await fetch("http://www.nyt.com");
   // await stuff();
