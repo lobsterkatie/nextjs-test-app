@@ -13,9 +13,10 @@ echo "CLONING SDK REPO"
 git clone https://github.com/getsentry/sentry-javascript.git
 cd sentry-javascript
 git checkout $BRANCH_NAME
+# SDK_COMMIT=$(git log --format="%s" | head -n 1)
 echo "Latest commit: $(git log --format="%C(auto) %h - %s" | head -n 1)"
-echo "SDK_COMMIT=\"$(git log --format="%C(auto)%h - %s" | head -n 1)\"" >>.env.local
-cat .env.local
+# echo "SDK_COMMIT=\"$(git log --format="%C(auto)%h - %s" | head -n 1)\"" >>.env.local
+# cat .env.local
 
 echo " "
 echo "INSTALLING SDK DEPENDENCIES"
@@ -30,6 +31,20 @@ yarn build:es5
 # we need to build esm versions because that's what `next` actually uses when it builds the app
 yarn build:esm
 cd $PROJECT_DIR
+
+SDK_COMMIT_MESSAGE=$(cd sentry-javascript && git log --format="%C(auto)%s" | head -n 1)
+
+CONFIGURE_SCOPE_CODE="
+Sentry.configureScope(scope => {
+  if (process.env.VERCEL) {
+    scope.setTag('vercel', true);
+    scope.setTag('commitMessage', process.env.VERCEL_GIT_COMMIT_MESSAGE);
+    scope.setTag('sdkCommitMessage', $SDK_COMMIT_MESSAGE);
+  }
+});"
+
+echo $CONFIGURE_SCOPE_CODE >>sentry.server.config.js
+echo $CONFIGURE_SCOPE_CODE >>sentry.client.config.js
 
 # Add built SDK as a file dependency. This has the side effect of forcing yarn to install all of the other dependencies,
 # saving us the trouble of needing to call `yarn` separately after this
