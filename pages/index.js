@@ -25,7 +25,7 @@ console.log(
   "in index.js Client defined:",
   Sentry.getCurrentHub().getClient() !== undefined
 );
-console.log(new Error("index page error").stack);
+// console.log(new Error("index page error").stack);
 
 export default function Home() {
   // console.log("in the Home render function");
