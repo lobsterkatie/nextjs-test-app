@@ -3,6 +3,10 @@
 import * as Sentry from "@sentry/nextjs";
 Error.stackTraceLimit = Infinity;
 
+async function stuff() {
+  console.log("I'm in the stuff function");
+}
+
 const handler = async (req, res) => {
   console.log(
     "\nI'm in the api route. Client defined:",
@@ -12,6 +16,7 @@ const handler = async (req, res) => {
   Sentry.captureException(new Error("in /hello API route"));
   // console.log("stack", new Error("").stack);
   await fetch("http://www.nyt.com");
+  await stuff();
   res.status(200).json({ name: "Maisey Dog" });
 };
 
