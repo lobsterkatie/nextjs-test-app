@@ -4,11 +4,11 @@ import * as Sentry from "@sentry/nextjs";
 Error.stackTraceLimit = Infinity;
 
 async function stuff() {
-  let counter = 2;
-  while (counter > 0) {
+  const counter = { value: 2 };
+  while (counter.value > 0) {
     setTimeout(() => {
-      counter -= 1;
-      console.log("new counter value:", counter);
+      counter.value -= 1;
+      console.log("new counter value:", counter.value);
     }, 1000);
   }
   console.log("I'm in the stuff function");
