@@ -9,7 +9,7 @@ const handler = async (req, res) => {
     Sentry.getCurrentHub().getClient() !== undefined
   );
   // throw new Error("in API route");
-  console.log("stack", new Error("").stack);
+  // console.log("stack", new Error("").stack);
   await fetch("http://www.nyt.com");
   res.status(200).json({ name: "Maisey Dog" });
 };
