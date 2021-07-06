@@ -12,6 +12,7 @@ async function stuff() {
     }, 1000);
   }
   console.log("I'm in the stuff function");
+  return Promise.resolve();
 }
 
 const handler = async (req, res) => {
