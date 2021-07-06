@@ -5,12 +5,12 @@ Error.stackTraceLimit = Infinity;
 
 async function stuff() {
   const counter = { value: 2 };
-  while (counter.value > 0) {
-    setTimeout(() => {
-      counter.value -= 1;
-      console.log("new counter value:", counter.value);
-    }, 1000);
-  }
+  // while (counter.value > 0) {
+  setTimeout(() => {
+    counter.value -= 1;
+    console.log("new counter value:", counter.value);
+  }, 1000);
+  // }
   console.log("I'm in the stuff function");
   return Promise.resolve();
 }
@@ -26,7 +26,7 @@ const handler = async (req, res) => {
   Sentry.captureException(new Error("in /hello API route 2"));
   // console.log("stack", new Error("").stack);
   await fetch("http://www.nyt.com");
-  await stuff();
+  // await stuff();
   res.status(200).json({ name: "Maisey Dog" });
 };
 
