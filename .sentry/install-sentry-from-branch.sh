@@ -40,7 +40,7 @@ Sentry.configureScope(scope => {
   if (process.env.VERCEL) {
     scope.setTag('vercel', true);
     scope.setTag('commitMessage', process.env.VERCEL_GIT_COMMIT_MESSAGE);
-    scope.setTag('sdkCommitMessage', $SDK_COMMIT_MESSAGE);
+    scope.setTag('sdkCommitMessage', \"$SDK_COMMIT_MESSAGE\");
   }
 });"
 
