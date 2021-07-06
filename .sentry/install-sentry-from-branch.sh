@@ -15,6 +15,7 @@ cd sentry-javascript
 git checkout $BRANCH_NAME
 echo "Latest commit: $(git log --format="%C(auto) %h - %s" | head -n 1)"
 echo "SDK_COMMIT=$(git log --format="%C(auto) %h - %s" | head -n 1)" >>.env.local
+cat .env.local
 
 echo " "
 echo "INSTALLING SDK DEPENDENCIES"
