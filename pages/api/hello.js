@@ -21,7 +21,7 @@ const handler = async (req, res) => {
     "\nI'm in the api route. Client defined:",
     Sentry.getCurrentHub().getClient() !== undefined
   );
-  // throw new Error("in /hello API route");
+  throw new Error("in /hello API route");
   // Sentry.captureException(new Error("in /hello API route"));
   // Sentry.captureException(new Error("in /hello API route 2"));
   // console.log("stack", new Error("").stack);
