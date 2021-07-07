@@ -70,6 +70,13 @@ export default function Home() {
         </button>
 
         <button
+          id="throw-API-error-button"
+          onClick={() => fetch("/api/boring/throwError")}
+        >
+          Click me to throw an error in an API route
+        </button>
+
+        <button
           id="link-to-other-page"
           // onClick={() => outerFunc(linkToOtherPageCallback)}
         >
