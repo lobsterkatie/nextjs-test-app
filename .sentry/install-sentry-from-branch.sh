@@ -8,8 +8,9 @@ PROJECT_DIR=$(pwd)
 # Set BRANCH_NAME as an environment variable
 source .sentry/set-branch-name.sh
 
-echo " "
-echo "CLONING SDK REPO"
+# echo " "
+echo "${\n}CLONING SDK REPO"
+echo -e "${\n}CLONING SDK REPO"
 git clone https://github.com/getsentry/sentry-javascript.git
 cd sentry-javascript
 git checkout $BRANCH_NAME
@@ -19,13 +20,15 @@ echo "Latest commit: $(git log --format="%C(auto) %h - %s" | head -n 1)"
 # echo "SDK_COMMIT=\"$(git log --format="%C(auto)%h - %s" | head -n 1)\"" >>.env.local
 # cat .env.local
 
-echo " "
-echo "INSTALLING SDK DEPENDENCIES"
+# echo " "
+echo "${"\n"}INSTALLING SDK DEPENDENCIES"
+echo -e "${"\n"}INSTALLING SDK DEPENDENCIES"
 # We need dev dependencies so that we can build the SDK
 yarn --prod false
 
 # echo " "
-echo -e "\nBUILDING SDK"
+BUILD_MSG="\nBUILDING SDK"
+echo -e "$BUILD_MSG"
 # we need to build es5 versions because `next.config.js` calls `require` on the SDK (to get `withSentryConfig`) and
 # therefore it looks for `dist/index.js`
 yarn build:es5
