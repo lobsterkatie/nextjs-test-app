@@ -22,8 +22,8 @@ echo "Latest commit: $(git log --format="%C(auto) %h - %s" | head -n 1)"
 # echo "SDK_COMMIT=\"$(git log --format="%C(auto)%h - %s" | head -n 1)\"" >>.env.local
 # cat .env.local
 
-echo " "
-echo "INSTALLING SDK DEPENDENCIES"
+# echo " "
+echo "$'\n'INSTALLING SDK DEPENDENCIES"
 # We need dev dependencies so that we can build the SDK
 yarn --prod false
 
