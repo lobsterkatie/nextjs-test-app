@@ -37,9 +37,9 @@ yarn build:es5
 yarn build:esm
 cd $PROJECT_DIR
 
-INFINITE_STACKTRACE_CODE="
+INFINITE_STACKTRACE_CODE=" " "
 Error.stackTraceLimit = Infinity;
-"
+  "
 
 SDK_COMMIT_MESSAGE=$(cd sentry-javascript && git log --format="%C(auto)%s" | head -n 1)
 CONFIGURE_SCOPE_CODE="
@@ -49,7 +49,8 @@ Sentry.configureScope(scope => {
     scope.setTag('commitMessage', process.env.VERCEL_GIT_COMMIT_MESSAGE);
     scope.setTag('sdkCommitMessage', \"$SDK_COMMIT_MESSAGE\");
   }
-});"
+});
+  "
 
 echo "$INFINITE_STACKTRACE_CODE" "$CONFIGURE_SCOPE_CODE" >>sentry.server.config.js
 echo "$INFINITE_STACKTRACE_CODE" "$CONFIGURE_SCOPE_CODE" >>sentry.client.config.js
