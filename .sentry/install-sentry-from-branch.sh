@@ -24,8 +24,8 @@ echo "INSTALLING SDK DEPENDENCIES"
 # We need dev dependencies so that we can build the SDK
 yarn --prod false
 
-echo " "
-echo "BUILDING SDK"
+# echo " "
+echo -e "\nBUILDING SDK"
 # we need to build es5 versions because `next.config.js` calls `require` on the SDK (to get `withSentryConfig`) and
 # therefore it looks for `dist/index.js`
 yarn build:es5
