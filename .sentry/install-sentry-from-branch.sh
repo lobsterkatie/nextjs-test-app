@@ -8,9 +8,11 @@ PROJECT_DIR=$(pwd)
 # Set BRANCH_NAME as an environment variable
 source .sentry/set-branch-name.sh
 
-# echo " "
-echo "${\n}CLONING SDK REPO"
-echo -e "${\n}CLONING SDK REPO"
+echo "current shell"
+echo $0
+
+echo " "
+echo "CLONING SDK REPO"
 git clone https://github.com/getsentry/sentry-javascript.git
 cd sentry-javascript
 git checkout $BRANCH_NAME
@@ -20,9 +22,8 @@ echo "Latest commit: $(git log --format="%C(auto) %h - %s" | head -n 1)"
 # echo "SDK_COMMIT=\"$(git log --format="%C(auto)%h - %s" | head -n 1)\"" >>.env.local
 # cat .env.local
 
-# echo " "
-echo "${"\n"}INSTALLING SDK DEPENDENCIES"
-echo -e "${"\n"}INSTALLING SDK DEPENDENCIES"
+echo " "
+echo "INSTALLING SDK DEPENDENCIES"
 # We need dev dependencies so that we can build the SDK
 yarn --prod false
 
@@ -36,8 +37,11 @@ yarn build:es5
 yarn build:esm
 cd $PROJECT_DIR
 
-SDK_COMMIT_MESSAGE=$(cd sentry-javascript && git log --format="%C(auto)%s" | head -n 1)
+INFINITE_STACKTRACE_CODE="
+Error.stackTraceLimit = Infinity;
+"
 
+SDK_COMMIT_MESSAGE=$(cd sentry-javascript && git log --format="%C(auto)%s" | head -n 1)
 CONFIGURE_SCOPE_CODE="
 Sentry.configureScope(scope => {
   if (process.env.VERCEL) {
@@ -47,8 +51,8 @@ Sentry.configureScope(scope => {
   }
 });"
 
-echo "$CONFIGURE_SCOPE_CODE" >>sentry.server.config.js
-echo "$CONFIGURE_SCOPE_CODE" >>sentry.client.config.js
+echo "$INFINITE_STACKTRACE_CODE" "$CONFIGURE_SCOPE_CODE" >>sentry.server.config.js
+echo "$INFINITE_STACKTRACE_CODE" "$CONFIGURE_SCOPE_CODE" >>sentry.client.config.js
 
 # Add built SDK as a file dependency. This has the side effect of forcing yarn to install all of the other dependencies,
 # saving us the trouble of needing to call `yarn` separately after this
