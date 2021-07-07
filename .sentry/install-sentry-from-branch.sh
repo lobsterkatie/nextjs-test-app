@@ -39,7 +39,7 @@ yarn build:es5
 yarn build:esm
 cd $PROJECT_DIR
 
-INFINITE_STACKTRACE_CODE=" " "
+INFINITE_STACKTRACE_CODE="
 Error.stackTraceLimit = Infinity;
   "
 

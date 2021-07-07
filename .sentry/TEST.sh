@@ -9,8 +9,10 @@
 #   }
 # });"
 
+# cat .sentry/configurescope.txt >>blah.txt
+# echo "$CONFIGURE_SCOPE_CODE" >>blah.txt
 # echo $CONFIGURE_SCOPE_CODE >>sentry.server.config.js
 # echo $CONFIGURE_SCOPE_CODE >>sentry.client.config.js
 
-cat sentry.server.config.js
-cat sentry.client.config.js
+# cat sentry.server.config.js
+# cat sentry.client.config.js

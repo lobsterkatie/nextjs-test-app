@@ -1,13 +1,5 @@
 import "../styles/globals.css";
 console.log("top top of _app.js");
-// import {
-//   clientConfig as sentryBrowserConfig,
-//   serverConfig as sentryServerConfig,
-// } from "@sentry/next-plugin-sentry";
-// const sentryServerConfig = { num: 5 };
-// const sentryBrowserConfig = { num: 6 };
-
-// console.log("top of _app.js", sentryServerConfig);
 
 import * as Sentry from "@sentry/nextjs";
 

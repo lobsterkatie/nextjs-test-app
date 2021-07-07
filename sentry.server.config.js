@@ -1,5 +1,10 @@
 import * as Sentry from "@sentry/nextjs";
 // const Sentry = require("@sentry/nextjs");
+import getConfig from "next/config";
+
+const { publicRuntimeConfig } = getConfig();
+console.log("runtime config");
+console.log(publicRuntimeConfig);
 // debugger;
 
 console.log("calling Sentry.init()");
