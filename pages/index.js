@@ -70,10 +70,24 @@ export default function Home() {
         </button>
 
         <button
+          id="no-API-error-button"
+          onClick={() => fetch("/api/boring/noError")}
+        >
+          Click me to hit an API route with no error
+        </button>
+
+        <button
           id="throw-API-error-button"
           onClick={() => fetch("/api/boring/throwError")}
         >
           Click me to throw an error in an API route
+        </button>
+
+        <button
+          id="capture-API-error-button"
+          onClick={() => fetch("/api/boring/captureException")}
+        >
+          Click me to call Sentry.captureException() in an API route
         </button>
 
         <button
