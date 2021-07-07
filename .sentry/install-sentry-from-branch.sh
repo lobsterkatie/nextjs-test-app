@@ -12,8 +12,8 @@ echo " "
 echo "CLONING SDK REPO"
 git clone https://github.com/getsentry/sentry-javascript.git
 cd sentry-javascript
-# git checkout $BRANCH_NAME
-git checkout 1473118fd2de036c1c88ffc343d22de24bfa6890
+git checkout $BRANCH_NAME
+# git checkout 1473118fd2de036c1c88ffc343d22de24bfa6890
 # SDK_COMMIT=$(git log --format="%s" | head -n 1)
 echo "Latest commit: $(git log --format="%C(auto) %h - %s" | head -n 1)"
 # echo "SDK_COMMIT=\"$(git log --format="%C(auto)%h - %s" | head -n 1)\"" >>.env.local
@@ -44,8 +44,8 @@ Sentry.configureScope(scope => {
   }
 });"
 
-echo $CONFIGURE_SCOPE_CODE >>sentry.server.config.js
-echo $CONFIGURE_SCOPE_CODE >>sentry.client.config.js
+echo "$CONFIGURE_SCOPE_CODE" >>sentry.server.config.js
+echo "$CONFIGURE_SCOPE_CODE" >>sentry.client.config.js
 
 # Add built SDK as a file dependency. This has the side effect of forcing yarn to install all of the other dependencies,
 # saving us the trouble of needing to call `yarn` separately after this
