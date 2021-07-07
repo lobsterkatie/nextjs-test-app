@@ -64,6 +64,11 @@ export default function Home() {
         >
           Click me to make a an erroring transaction
         </button>
+
+        <button id="alert-button" onClick={() => alert("hello!")}>
+          Click me to show an alert
+        </button>
+
         <button
           id="link-to-other-page"
           // onClick={() => outerFunc(linkToOtherPageCallback)}
