@@ -23,7 +23,7 @@ echo "Latest commit: $(git log --format="%C(auto) %h - %s" | head -n 1)"
 # cat .env.local
 
 # echo " "
-echo "$'\n'INSTALLING SDK DEPENDENCIES"
+echo $'\nINSTALLING SDK DEPENDENCIES'
 # We need dev dependencies so that we can build the SDK
 yarn --prod false
 
