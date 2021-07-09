@@ -1,3 +1,5 @@
+#!/usr/bin/bash
+
 # SCRIPT TO INCLUDE AS PART OF A VERCEL-DEPLOYED PROJECT, SO THAT IT USES A BRANCH FROM THE SDK REPO
 # USE `yarn vercel:project <path-to-project>` TO HAVE IT AUTOMATICALLY ADDED TO YOUR PROJECT
 
@@ -12,8 +14,8 @@ echo "current shell"
 echo $0
 which bash
 
-echo " "
-echo "CLONING SDK REPO"
+# echo " "
+echo -e "\nCLONING SDK REPO\n"
 git clone https://github.com/getsentry/sentry-javascript.git
 cd sentry-javascript
 git checkout $BRANCH_NAME
