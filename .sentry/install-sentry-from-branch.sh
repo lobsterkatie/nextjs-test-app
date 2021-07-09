@@ -16,7 +16,7 @@ echo $0
 
 # echo " "
 echo -e "\nCLONING SDK REPO\n"
-echo "
+echo "\
 CLONING SDK REPO
   "
 git clone https://github.com/getsentry/sentry-javascript.git
