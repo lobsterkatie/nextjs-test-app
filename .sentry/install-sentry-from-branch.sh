@@ -19,8 +19,8 @@ printf "%b" "\nCLONING SDK REPO\n"
 printf "\n%s\n" "CLONING SDK REPO"
 git clone https://github.com/getsentry/sentry-javascript.git
 cd sentry-javascript
-# git checkout $BRANCH_NAME
-git checkout 055854221c08685f07a0121bff911f6648a0e446
+git checkout $BRANCH_NAME
+# git checkout 055854221c08685f07a0121bff911f6648a0e446
 # SDK_COMMIT=$(git log --format="%s" | head -n 1)
 echo "Latest commit: $(git log --format="%C(auto) %h - %s" | head -n 1)"
 # echo "SDK_COMMIT=\"$(git log --format="%C(auto)%h - %s" | head -n 1)\"" >>.env.local
