@@ -27,9 +27,7 @@ const handler = async (req, res) => {
   // console.log("stack", new Error("").stack);
   await fetch("http://www.nyt.com");
   // await stuff();
-  setTimeout(() => {
-    res.status(200).json({ name: "Maisey Dog" });
-  }, 2000);
+  res.status(200).json({ name: "Maisey Dog" });
 };
 
 export default Sentry.withSentry(handler);
