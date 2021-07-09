@@ -12,7 +12,7 @@ source .sentry/set-branch-name.sh
 
 echo "current shell"
 echo $0
-# which bash
+man echo
 
 # echo " "
 printf "%b" "\nCLONING SDK REPO\n"
