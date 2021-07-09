@@ -15,14 +15,12 @@ echo $0
 # which bash
 
 # echo " "
-echo -e "\nCLONING SDK REPO\n"
-echo " \
-CLONING SDK REPO
-  "
+printf "%b" "\nCLONING SDK REPO\n"
+printf "\n%s\n" "CLONING SDK REPO"
 git clone https://github.com/getsentry/sentry-javascript.git
 cd sentry-javascript
-git checkout $BRANCH_NAME
-# git checkout 1473118fd2de036c1c88ffc343d22de24bfa6890
+# git checkout $BRANCH_NAME
+git checkout 055854221c08685f07a0121bff911f6648a0e446
 # SDK_COMMIT=$(git log --format="%s" | head -n 1)
 echo "Latest commit: $(git log --format="%C(auto) %h - %s" | head -n 1)"
 # echo "SDK_COMMIT=\"$(git log --format="%C(auto)%h - %s" | head -n 1)\"" >>.env.local
