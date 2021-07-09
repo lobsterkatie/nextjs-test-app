@@ -10,12 +10,15 @@ PROJECT_DIR=$(pwd)
 # Set BRANCH_NAME as an environment variable
 source .sentry/set-branch-name.sh
 
-# echo "current shell"
-# echo $0
+echo "current shell"
+echo $0
 # which bash
 
 # echo " "
 echo -e "\nCLONING SDK REPO\n"
+echo "
+CLONING SDK REPO
+  "
 git clone https://github.com/getsentry/sentry-javascript.git
 cd sentry-javascript
 git checkout $BRANCH_NAME
