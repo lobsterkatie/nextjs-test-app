@@ -10,9 +10,9 @@ PROJECT_DIR=$(pwd)
 # Set BRANCH_NAME as an environment variable
 source .sentry/set-branch-name.sh
 
-echo "current shell"
-echo $0
-which bash
+# echo "current shell"
+# echo $0
+# which bash
 
 # echo " "
 echo -e "\nCLONING SDK REPO\n"
