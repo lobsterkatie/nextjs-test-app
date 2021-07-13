@@ -1,11 +1,10 @@
 import * as Sentry from "@sentry/nextjs";
 // const Sentry = require("@sentry/nextjs");
-import getConfig from "next/config";
+// import getConfig from "next/config";
 
-const { publicRuntimeConfig } = getConfig();
-console.log("runtime config");
-console.log(publicRuntimeConfig);
-// debugger;
+// const { publicRuntimeConfig } = getConfig();
+// console.log("runtime config");
+// console.log(publicRuntimeConfig);
 
 console.log("calling Sentry.init()");
 
@@ -25,14 +24,14 @@ Sentry.init({
     new Sentry.Integrations.Http({ tracing: true }),
   ],
   beforeSend: (event) => {
-    console.log("in server beforeSend!");
-    try {
-      console.log("Exception:", event.exception.values[0].value);
-    } catch (error) {
-      // pass
-    }
-    // return null;
-    // console.log(event);
+    // console.log("in server beforeSend!");
+    // try {
+    //   console.log("Exception:", event.exception.values[0].value);
+    // } catch (error) {
+    //   // pass
+    // }
+    // // return null;
+    // // console.log(event);
     event.fingerprint = [Date.now()];
     return event;
   },

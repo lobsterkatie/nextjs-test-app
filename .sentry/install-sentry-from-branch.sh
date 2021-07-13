@@ -24,20 +24,14 @@ git clone https://github.com/getsentry/sentry-javascript.git
 cd sentry-javascript
 git checkout $BRANCH_NAME
 # git checkout 055854221c08685f07a0121bff911f6648a0e446
-# SDK_COMMIT=$(git log --format="%s" | head -n 1)
 echo "Latest commit: $(git log --format="%C(auto) %h - %s" | head -n 1)"
-# echo "SDK_COMMIT=\"$(git log --format="%C(auto)%h - %s" | head -n 1)\"" >>.env.local
-# cat .env.local
-NEWLINE=$'\n'
-# echo " "
-echo $'\nINSTALLING SDK DEPENDENCIES'
-echo "${NEWLINE}INSTALLING SDK DEPENDENCIES"
+echo " "
+echo "INSTALLING SDK DEPENDENCIES"
 # We need dev dependencies so that we can build the SDK
 yarn --prod false
 
-# echo " "
-BUILD_MSG="\nBUILDING SDK"
-echo -e "${BUILD_MSG}"
+echo " "
+echo "BUILDING SDK"
 # we need to build es5 versions because `next.config.js` calls `require` on the SDK (to get `withSentryConfig`) and
 # therefore it looks for `dist/index.js`
 yarn build:es5
@@ -68,7 +62,7 @@ echo "$INFINITE_STACKTRACE_CODE" "$CONFIGURE_SCOPE_CODE" >>sentry.client.config.
 echo " "
 echo "SUBSTITUTING LOCAL SDK FOR PUBLISHED ONE AND INSTALLING PROJECT DEPENDENCIES"
 echo "yarn add file:sentry-javascript/packages/nextjs"
-yarn add file:sentry-javascript/packages/nextjs file:sentry-javascript/packages/core
+yarn add file:sentry-javascript/packages/nextjs
 # yarn add file:sentry-javascript/packages/core
 cat node_modules/@sentry/core/dist/basebackend.js
 
