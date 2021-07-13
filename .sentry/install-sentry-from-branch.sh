@@ -57,49 +57,57 @@ Sentry.configureScope(scope => {
 echo "$INFINITE_STACKTRACE_CODE" "$CONFIGURE_SCOPE_CODE" >>sentry.server.config.js
 echo "$INFINITE_STACKTRACE_CODE" "$CONFIGURE_SCOPE_CODE" >>sentry.client.config.js
 
-# Add built SDK as a file dependency. This has the side effect of forcing yarn to install all of the other dependencies,
-# saving us the trouble of needing to call `yarn` separately after this
-echo " "
-echo "SUBSTITUTING LOCAL SDK FOR PUBLISHED ONE AND INSTALLING PROJECT DEPENDENCIES"
-echo "yarn add file:sentry-javascript/packages/nextjs"
-yarn add file:sentry-javascript/packages/nextjs
-# yarn add file:sentry-javascript/packages/core
-cat node_modules/@sentry/core/dist/basebackend.js
+# # Add built SDK as a file dependency. This has the side effect of forcing yarn to install all of the other dependencies,
+# # saving us the trouble of needing to call `yarn` separately after this
+# echo " "
+# echo "SUBSTITUTING LOCAL SDK FOR PUBLISHED ONE AND INSTALLING PROJECT DEPENDENCIES"
+# echo "yarn add file:sentry-javascript/packages/nextjs"
+# yarn add file:sentry-javascript/packages/nextjs
+# # yarn add file:sentry-javascript/packages/core
 
 # In case for any reason we ever need to link the local SDK rather than adding it as a file dependency:
 
-# for abs_package_path in ${PROJECT_DIR}/sentry-javascript/packages/*; do
+echo " "
+echo "LINKING LOCAL SDK INTO PROJECT"
 
-# # link the built packages into project dependencies
-# for abs_package_path in sentry-javascript/packages/*; do
-#   package=$(basename $abs_package_path)
+ls -l sentry-javascript/packages/
 
-#   # this one will error out because it's not called @sentry/typescript, it's
-#   # called @sentry-internal/typescript, but we don't need it, so just move on
-#   if [ "$package" = "typescript" ]; then
-#     continue
-#   fi
+for abs_package_path in sentry-javascript/packages/*; do
+  package=$(basename $abs_package_path)
 
-#   echo " "
-#   echo "Linking @sentry/${package}"
+  # this one will error out because it's not called @sentry/typescript, it's
+  # called @sentry-internal/typescript, but we don't need it, so just move on
+  if [ "$package" = "typescript" ]; then
+    continue
+  fi
 
-#   cd $abs_package_path
-#   yarn link
+  echo " "
+  echo "Linking @sentry/${package}"
 
-#   cd $PROJECT_DIR
-#   yarn link "@sentry/$package"
-# done
+  cd $abs_package_path
+  yarn link
 
-# # These aren't in the repo and therefore have to be done separately (we link these even though they're not in the repo
-# # because the branch might specify a different version of either than the published SDK does)
-# for package in "cli" "webpack-plugin"; do
+  cd $PROJECT_DIR
+  yarn link "@sentry/$package"
+done
 
-#   echo " "
-#   echo "Linking @sentry/${package}"
+# These aren't in the repo and therefore have to be done separately (we link these even though they're not in the repo
+# because the branch might specify a different version of either than the published SDK does)
+for package in "cli" "webpack-plugin"; do
 
-#   cd sentry-javascript/node_modules/@sentry/$package
-#   yarn link
+  echo " "
+  echo "Linking @sentry/${package}"
 
-#   cd $PROJECT_DIR
-#   yarn link "@sentry/$package"
-# done
+  cd sentry-javascript/node_modules/@sentry/$package
+  yarn link
+
+  cd $PROJECT_DIR
+  yarn link "@sentry/$package"
+done
+
+ls -l sentry-javascript/packages/
+
+echo " "
+echo "INSTALLING PROJECT DEPENDENCIES"
+
+yarn
