@@ -31,7 +31,7 @@ echo "Latest commit: $(git log --format="%C(auto) %h - %s" | head -n 1)"
 
 # echo " "
 echo $'\nINSTALLING SDK DEPENDENCIES'
-echo -e $'\nINSTALLING SDK DEPENDENCIES'
+echo -e "\nINSTALLING SDK DEPENDENCIES"
 # We need dev dependencies so that we can build the SDK
 yarn --prod false
 
