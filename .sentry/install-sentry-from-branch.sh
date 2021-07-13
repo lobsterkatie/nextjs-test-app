@@ -14,6 +14,8 @@ echo "current shell"
 echo $0
 bash --version
 shopt xpg_echo
+shopt -s xpg_echo
+shopt xpg_echo
 
 # echo " "
 printf "%b" "\nCLONING SDK REPO\n"
