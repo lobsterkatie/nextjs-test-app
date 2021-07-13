@@ -32,18 +32,21 @@ echo "Latest commit: $(git log --format="%C(auto) %h - %s" | head -n 1)"
 
 # echo " "
 echo $'\nINSTALLING SDK DEPENDENCIES'
-echo -e "\nINSTALLING SDK DEPENDENCIES"
+echo "\nINSTALLING SDK DEPENDENCIES"
 # We need dev dependencies so that we can build the SDK
 yarn --prod false
 
 # echo " "
 BUILD_MSG="\nBUILDING SDK"
-echo -e "$BUILD_MSG"
+echo -e "${BUILD_MSG}"
+cat packages/core/src/basebackend.ts
 # we need to build es5 versions because `next.config.js` calls `require` on the SDK (to get `withSentryConfig`) and
 # therefore it looks for `dist/index.js`
 yarn build:es5
+cat packages/core/dist/basebackend.js
 # we need to build esm versions because that's what `next` actually uses when it builds the app
 yarn build:esm
+cat packages/core/esm/basebackend.js
 cd $PROJECT_DIR
 
 INFINITE_STACKTRACE_CODE="
