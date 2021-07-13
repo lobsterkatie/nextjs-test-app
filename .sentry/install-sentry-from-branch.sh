@@ -16,6 +16,7 @@ bash --version
 shopt xpg_echo
 shopt -s xpg_echo
 shopt xpg_echo
+env | sort
 
 # echo " "
 printf "%b" "\nCLONING SDK REPO\n"
