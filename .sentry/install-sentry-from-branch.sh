@@ -13,7 +13,7 @@ source .sentry/set-branch-name.sh
 echo "current shell"
 echo $0
 bash --version
-echo --version
+shopt xpg_echo
 
 # echo " "
 printf "%b" "\nCLONING SDK REPO\n"
