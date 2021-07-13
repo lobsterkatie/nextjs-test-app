@@ -29,10 +29,10 @@ git checkout $BRANCH_NAME
 echo "Latest commit: $(git log --format="%C(auto) %h - %s" | head -n 1)"
 # echo "SDK_COMMIT=\"$(git log --format="%C(auto)%h - %s" | head -n 1)\"" >>.env.local
 # cat .env.local
-
+NEWLINE=$'\n'
 # echo " "
 echo $'\nINSTALLING SDK DEPENDENCIES'
-echo "\nINSTALLING SDK DEPENDENCIES"
+echo "${NEWLINE}INSTALLING SDK DEPENDENCIES"
 # We need dev dependencies so that we can build the SDK
 yarn --prod false
 
