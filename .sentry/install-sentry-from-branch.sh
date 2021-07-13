@@ -39,14 +39,11 @@ yarn --prod false
 # echo " "
 BUILD_MSG="\nBUILDING SDK"
 echo -e "${BUILD_MSG}"
-cat packages/core/src/basebackend.ts
 # we need to build es5 versions because `next.config.js` calls `require` on the SDK (to get `withSentryConfig`) and
 # therefore it looks for `dist/index.js`
 yarn build:es5
-cat packages/core/dist/basebackend.js
 # we need to build esm versions because that's what `next` actually uses when it builds the app
 yarn build:esm
-cat packages/core/esm/basebackend.js
 cd $PROJECT_DIR
 
 INFINITE_STACKTRACE_CODE="
@@ -73,6 +70,8 @@ echo " "
 echo "SUBSTITUTING LOCAL SDK FOR PUBLISHED ONE AND INSTALLING PROJECT DEPENDENCIES"
 echo "yarn add file:sentry-javascript/packages/nextjs"
 yarn add file:sentry-javascript/packages/nextjs
+yarn add file:sentry-javascript/packages/core
+cat package.json
 
 # In case for any reason we ever need to link the local SDK rather than adding it as a file dependency:
 
