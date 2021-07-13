@@ -69,9 +69,9 @@ echo "$INFINITE_STACKTRACE_CODE" "$CONFIGURE_SCOPE_CODE" >>sentry.client.config.
 echo " "
 echo "SUBSTITUTING LOCAL SDK FOR PUBLISHED ONE AND INSTALLING PROJECT DEPENDENCIES"
 echo "yarn add file:sentry-javascript/packages/nextjs"
-yarn add file:sentry-javascript/packages/nextjs
-yarn add file:sentry-javascript/packages/core
-cat package.json
+yarn add file:sentry-javascript/packages/nextjs file:sentry-javascript/packages/core
+# yarn add file:sentry-javascript/packages/core
+ls -l node_modules/@sentry
 
 # In case for any reason we ever need to link the local SDK rather than adding it as a file dependency:
 
