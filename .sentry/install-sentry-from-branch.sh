@@ -70,7 +70,7 @@ echo "$INFINITE_STACKTRACE_CODE" "$CONFIGURE_SCOPE_CODE" >>sentry.client.config.
 echo " "
 echo "LINKING LOCAL SDK INTO PROJECT"
 
-ls -l sentry-javascript/packages/
+ls -l node_modules/@sentry
 
 for abs_package_path in sentry-javascript/packages/*; do
   package=$(basename $abs_package_path)
@@ -105,7 +105,7 @@ for package in "cli" "webpack-plugin"; do
   yarn link "@sentry/$package"
 done
 
-ls -l sentry-javascript/packages/
+ls -l node_modules/@sentry
 
 echo " "
 echo "INSTALLING PROJECT DEPENDENCIES"
