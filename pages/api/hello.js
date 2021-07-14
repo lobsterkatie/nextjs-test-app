@@ -3,19 +3,20 @@
 import * as Sentry from "@sentry/nextjs";
 Error.stackTraceLimit = Infinity;
 
-async function stuff() {
-  const counter = { value: 2 };
-  // while (counter.value > 0) {
-  setTimeout(() => {
-    counter.value -= 1;
-    console.log("new counter value:", counter.value);
-  }, 1000);
-  // }
-  console.log("I'm in the stuff function");
-  return Promise.resolve();
-}
+// async function stuff() {
+//   const counter = { value: 2 };
+//   // while (counter.value > 0) {
+//   setTimeout(() => {
+//     counter.value -= 1;
+//     console.log("new counter value:", counter.value);
+//   }, 1000);
+//   // }
+//   console.log("I'm in the stuff function");
+//   return Promise.resolve();
+// }
 
 const handler = async (req, res) => {
+  debugger;
   // setImmediate(stuff);
   console.log(
     "\nI'm in the api route. Client defined:",
