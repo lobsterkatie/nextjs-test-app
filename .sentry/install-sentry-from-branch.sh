@@ -25,6 +25,27 @@ cd sentry-javascript
 git checkout $BRANCH_NAME
 # git checkout 055854221c08685f07a0121bff911f6648a0e446
 echo "Latest commit: $(git log --format="%C(auto) %h - %s" | head -n 1)"
+
+# for abs_package_path in packages/*; do
+#   package=$(basename $abs_package_path)
+
+#   # this one will error out because it's not called @sentry/typescript, it's
+#   # called @sentry-internal/typescript, but we don't need it, so just move on
+#   if [ "$package" = "typescript" ]; then
+#     continue
+#   fi
+
+#   echo " "
+#   echo "Linking @sentry/${package}"
+
+#   cd $abs_package_path
+#   # yarn link
+#   ls node_modules/
+
+#   cd $PROJECT_DIR
+#   # yarn link "@sentry/$package"
+# done
+
 echo " "
 echo "INSTALLING SDK DEPENDENCIES"
 # We need dev dependencies so that we can build the SDK
@@ -57,57 +78,58 @@ Sentry.configureScope(scope => {
 echo "$INFINITE_STACKTRACE_CODE" "$CONFIGURE_SCOPE_CODE" >>sentry.server.config.js
 echo "$INFINITE_STACKTRACE_CODE" "$CONFIGURE_SCOPE_CODE" >>sentry.client.config.js
 
-# # Add built SDK as a file dependency. This has the side effect of forcing yarn to install all of the other dependencies,
-# # saving us the trouble of needing to call `yarn` separately after this
-# echo " "
-# echo "SUBSTITUTING LOCAL SDK FOR PUBLISHED ONE AND INSTALLING PROJECT DEPENDENCIES"
-# echo "yarn add file:sentry-javascript/packages/nextjs"
-# yarn add file:sentry-javascript/packages/nextjs
-# # yarn add file:sentry-javascript/packages/core
+# Add built SDK as a file dependency. This has the side effect of forcing yarn to install all of the other dependencies,
+# saving us the trouble of needing to call `yarn` separately after this
+echo " "
+echo "SUBSTITUTING LOCAL SDK FOR PUBLISHED ONE AND INSTALLING PROJECT DEPENDENCIES"
+echo "yarn add file:sentry-javascript/packages/nextjs"
+yarn add file:sentry-javascript/packages/nextjs
+# yarn add file:sentry-javascript/packages/core
 
 # In case for any reason we ever need to link the local SDK rather than adding it as a file dependency:
 
-echo " "
-echo "LINKING LOCAL SDK INTO PROJECT"
+# echo " "
+# echo "LINKING LOCAL SDK INTO PROJECT"
 
-ls -l node_modules/@sentry
+# ls -l node_modules/@sentry
 
-for abs_package_path in sentry-javascript/packages/*; do
-  package=$(basename $abs_package_path)
+# for abs_package_path in sentry-javascript/packages/*; do
+#   package=$(basename $abs_package_path)
 
-  # this one will error out because it's not called @sentry/typescript, it's
-  # called @sentry-internal/typescript, but we don't need it, so just move on
-  if [ "$package" = "typescript" ]; then
-    continue
-  fi
+#   # this one will error out because it's not called @sentry/typescript, it's
+#   # called @sentry-internal/typescript, but we don't need it, so just move on
+#   if [ "$package" = "typescript" ]; then
+#     continue
+#   fi
 
-  echo " "
-  echo "Linking @sentry/${package}"
+#   echo " "
+#   echo "Linking @sentry/${package}"
 
-  cd $abs_package_path
-  yarn link
+#   cd $abs_package_path
+#   # yarn link
+#   ls node_modules/
 
-  cd $PROJECT_DIR
-  yarn link "@sentry/$package"
-done
+#   cd $PROJECT_DIR
+#   # yarn link "@sentry/$package"
+# done
 
-# These aren't in the repo and therefore have to be done separately (we link these even though they're not in the repo
-# because the branch might specify a different version of either than the published SDK does)
-for package in "cli" "webpack-plugin"; do
+# # These aren't in the repo and therefore have to be done separately (we link these even though they're not in the repo
+# # because the branch might specify a different version of either than the published SDK does)
+# for package in "cli" "webpack-plugin"; do
 
-  echo " "
-  echo "Linking @sentry/${package}"
+#   echo " "
+#   echo "Linking @sentry/${package}"
 
-  cd sentry-javascript/node_modules/@sentry/$package
-  yarn link
+#   cd sentry-javascript/node_modules/@sentry/$package
+#   yarn link
 
-  cd $PROJECT_DIR
-  yarn link "@sentry/$package"
-done
+#   cd $PROJECT_DIR
+#   yarn link "@sentry/$package"
+# done
 
-ls -l node_modules/@sentry
+# ls -l node_modules/@sentry
 
-echo " "
-echo "INSTALLING PROJECT DEPENDENCIES"
+# echo " "
+# echo "INSTALLING PROJECT DEPENDENCIES"
 
-yarn
+# yarn
