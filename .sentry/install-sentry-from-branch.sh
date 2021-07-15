@@ -53,6 +53,8 @@ echo " "
 echo "POINTING SIBLING DEPENDENCIES IN PACKAGE.JSON AT LOCAL DIRECTORIES"
 
 PACKAGES_DIR="$REPO_DIR/packages"
+ESCAPED_PACKAGES_DIR=$(echo $PACKAGES_DIR | sed s/'\/'/'\\\/'/g)
+echo $ESCAPED_PACKAGES_DIR
 
 # get the names of all of the packages
 package_names=()
@@ -75,7 +77,7 @@ for package in ${package_names[@]}; do
   for package_dep in ${package_names[@]}; do
     # echo $package_dep
     # sed -Ei "" /"${quote}@sentry(-internal)?\/${package_dep}${quote}"/s/"[0-9]+\.[0-9]+\.[0-9]+"/"file:.\/${package_dep}"/ package.json
-    sed -Ei /"@sentry\/${package_dep}"/s/"[0-9]+\.[0-9]+\.[0-9]+"/"file:${PACKAGES_DIR}\/${package_dep}"/ package.json
+    sed -Ei /"@sentry\/${package_dep}"/s/"[0-9]+\.[0-9]+\.[0-9]+"/"file:${ESCAPED_PACKAGES_DIR}\/${package_dep}"/ package.json
   done
   cat package.json
   echo " "
