@@ -60,6 +60,8 @@ for abs_package_path in ${PACKAGES_DIR}/*; do
   package_names+=($(basename $abs_package_path))
 done
 
+set -x
+
 # modify each package's package.json file
 for package in ${package_names[@]}; do
   cd ${PACKAGES_DIR}/${package}
@@ -79,6 +81,8 @@ for package in ${package_names[@]}; do
   echo " "
   echo " "
 done
+
+set +x
 
 echo " "
 echo "MOVING BACK TO PROJECT DIRECTORY"
