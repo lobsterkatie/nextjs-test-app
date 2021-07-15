@@ -21,30 +21,14 @@ source .sentry/set-branch-name.sh
 echo " "
 echo "CLONING SDK REPO"
 git clone https://github.com/getsentry/sentry-javascript.git
+
+echo " "
+echo "MOVING INTO REPO DIRECTORY AND CHECKING OUT BRANCH"
 cd sentry-javascript
 git checkout $BRANCH_NAME
 # git checkout 055854221c08685f07a0121bff911f6648a0e446
-echo "Latest commit: $(git log --format="%C(auto) %h - %s" | head -n 1)"
-
-# for abs_package_path in packages/*; do
-#   package=$(basename $abs_package_path)
-
-#   # this one will error out because it's not called @sentry/typescript, it's
-#   # called @sentry-internal/typescript, but we don't need it, so just move on
-#   if [ "$package" = "typescript" ]; then
-#     continue
-#   fi
-
-#   echo " "
-#   echo "Linking @sentry/${package}"
-
-#   cd $abs_package_path
-#   # yarn link
-#   ls node_modules/
-
-#   cd $PROJECT_DIR
-#   # yarn link "@sentry/$package"
-# done
+# echo " "
+echo "LATEST COMMIT: $(git log --format="%C(auto) %h - %s" | head -n 1)"
 
 echo " "
 echo "INSTALLING SDK DEPENDENCIES"
@@ -58,6 +42,45 @@ echo "BUILDING SDK"
 yarn build:es5
 # we need to build esm versions because that's what `next` actually uses when it builds the app
 yarn build:esm
+
+# Set all packages in the repo to point to their siblings as file dependencies.
+# That way, when we install the local copy of @sentry/nextjs, it'll pull the
+# local copy of each of its @sentry/* dependents. This mimics what Lerna does
+# with symlinks, just with file dependencies (which we have to use because
+# linking seems to lead to module resolution errors).
+echo " "
+echo "POINTING SIBLING DEPENDENCIES IN PACKAGE.JSON AT LOCAL DIRECTORIES"
+
+PACKAGES_DIR="$PROJECT_DIR/sentry-javascript/packages/"
+
+# get the names of all of the packages
+package_names=()
+for abs_package_path in ${PACKAGES_DIR}/*; do
+  package_names+=($(basename $abs_package_path))
+done
+
+# modify each package's package.json file
+for package in ${package_names[@]}; do
+  cd ${PACKAGES_DIR}/${package}
+  # echo $package
+  # echo " "
+
+  # search package.json for sentry dependencies from the monorepo and for each
+  # sibling dependency found, replace the version number with a file dependency
+  # pointing to the sibling itself (so `"@sentry/utils": "6.9.0"` becomes
+  # `"@sentry/utils": "file:./utils"`)
+  for package_dep in ${package_names[@]}; do
+    # echo $package_dep
+    # sed -Ei "" /"${quote}@sentry(-internal)?\/${package_dep}${quote}"/s/"[0-9]+\.[0-9]+\.[0-9]+"/"file:.\/${package_dep}"/ package.json
+    sed -Ei "" /"@sentry\/${package_dep}"/s/"[0-9]+\.[0-9]+\.[0-9]+"/"file:.\/${package_dep}"/ package.json
+  done
+  cat package.json
+  echo " "
+  echo " "
+done
+
+echo " "
+echo "MOVING BACK TO PROJECT DIRECTORY"
 cd $PROJECT_DIR
 
 INFINITE_STACKTRACE_CODE="
