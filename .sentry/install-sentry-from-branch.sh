@@ -6,6 +6,7 @@
 # CUSTOM INSTALL COMMAND FOR PROJECT ON VERCEL: `source .sentry/install-sentry-from-branch.sh`
 
 PROJECT_DIR=$(pwd)
+REPO_DIR="${PROJECT_DIR}/sentry-javascript"
 
 # Set BRANCH_NAME as an environment variable
 source .sentry/set-branch-name.sh
@@ -24,7 +25,7 @@ git clone https://github.com/getsentry/sentry-javascript.git
 
 echo " "
 echo "MOVING INTO REPO DIRECTORY AND CHECKING OUT BRANCH"
-cd sentry-javascript
+cd $REPO_DIR
 git checkout $BRANCH_NAME
 # git checkout 055854221c08685f07a0121bff911f6648a0e446
 # echo " "
@@ -51,7 +52,7 @@ yarn build:esm
 echo " "
 echo "POINTING SIBLING DEPENDENCIES IN PACKAGE.JSON AT LOCAL DIRECTORIES"
 
-PACKAGES_DIR="$PROJECT_DIR/sentry-javascript/packages/"
+PACKAGES_DIR="$REPO_DIR/packages"
 
 # get the names of all of the packages
 package_names=()
@@ -72,7 +73,7 @@ for package in ${package_names[@]}; do
   for package_dep in ${package_names[@]}; do
     # echo $package_dep
     # sed -Ei "" /"${quote}@sentry(-internal)?\/${package_dep}${quote}"/s/"[0-9]+\.[0-9]+\.[0-9]+"/"file:.\/${package_dep}"/ package.json
-    sed -Ei /"@sentry\/${package_dep}"/s/"[0-9]+\.[0-9]+\.[0-9]+"/"file:.\/${package_dep}"/ package.json
+    sed -Ei /"@sentry\/${package_dep}"/s/"[0-9]+\.[0-9]+\.[0-9]+"/"file:${PACKAGES_DIR}\/${package_dep}"/ package.json
   done
   cat package.json
   echo " "
