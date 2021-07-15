@@ -53,6 +53,8 @@ echo " "
 echo "POINTING SIBLING DEPENDENCIES IN PACKAGE.JSON AT LOCAL DIRECTORIES"
 
 PACKAGES_DIR="$REPO_DIR/packages"
+
+# escape all of the slashes in the path for use in sed
 ESCAPED_PACKAGES_DIR=$(echo $PACKAGES_DIR | sed s/'\/'/'\\\/'/g)
 echo $ESCAPED_PACKAGES_DIR
 
@@ -62,7 +64,7 @@ for abs_package_path in ${PACKAGES_DIR}/*; do
   package_names+=($(basename $abs_package_path))
 done
 
-set -x
+# set -x
 
 # modify each package's package.json file
 for package in ${package_names[@]}; do
@@ -79,12 +81,12 @@ for package in ${package_names[@]}; do
     # sed -Ei "" /"${quote}@sentry(-internal)?\/${package_dep}${quote}"/s/"[0-9]+\.[0-9]+\.[0-9]+"/"file:.\/${package_dep}"/ package.json
     sed -Ei /"@sentry\/${package_dep}"/s/"[0-9]+\.[0-9]+\.[0-9]+"/"file:${ESCAPED_PACKAGES_DIR}\/${package_dep}"/ package.json
   done
-  cat package.json
-  echo " "
-  echo " "
+  # cat package.json
+  # echo " "
+  # echo " "
 done
 
-set +x
+# set +x
 
 echo " "
 echo "MOVING BACK TO PROJECT DIRECTORY"
