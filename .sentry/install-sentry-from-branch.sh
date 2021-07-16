@@ -81,9 +81,6 @@ for package in ${package_names[@]}; do
     # sed -Ei "" /"${quote}@sentry(-internal)?\/${package_dep}${quote}"/s/"[0-9]+\.[0-9]+\.[0-9]+"/"file:.\/${package_dep}"/ package.json
     sed -Ei /"@sentry\/${package_dep}"/s/"[0-9]+\.[0-9]+\.[0-9]+"/"file:${ESCAPED_PACKAGES_DIR}\/${package_dep}"/ package.json
   done
-  # cat package.json
-  # echo " "
-  # echo " "
 done
 
 # set +x
