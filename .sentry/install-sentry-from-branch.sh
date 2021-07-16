@@ -69,8 +69,6 @@ done
 # modify each package's package.json file
 for package in ${package_names[@]}; do
   cd ${PACKAGES_DIR}/${package}
-  # echo $package
-  # echo " "
 
   # search package.json for sentry dependencies from the monorepo and for each
   # sibling dependency found, replace the version number with a file dependency
