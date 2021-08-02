@@ -1,1 +1,1 @@
-export BRANCH_NAME=temp-7-21-master
+export BRANCH_NAME=kmclb-temp-8-2-vercel
