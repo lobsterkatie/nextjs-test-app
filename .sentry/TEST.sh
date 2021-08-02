@@ -6,10 +6,10 @@ echo "ls .next"
 ls .next
 echo " "
 echo "ls .next/server"
-ls .next/server || 0
+ls .next/server || exit 0
 echo " "
 echo "ls .next/serverless"
-ls .next/serverless || 0
+ls .next/serverless || exit 0
 echo " "
 echo "ls .next/static"
-ls .next/static || 0
+ls .next/static || exit 0
