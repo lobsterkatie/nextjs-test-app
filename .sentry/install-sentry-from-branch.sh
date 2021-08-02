@@ -26,8 +26,8 @@ git clone https://github.com/getsentry/sentry-javascript.git
 echo " "
 echo "MOVING INTO REPO DIRECTORY AND CHECKING OUT BRANCH"
 cd $REPO_DIR
-git checkout $BRANCH_NAME
-# git checkout 055854221c08685f07a0121bff911f6648a0e446
+# git checkout $BRANCH_NAME
+git checkout b6e355442c3c9df16d2938cacc9924e8c3bfb1e4
 # echo " "
 echo "LATEST COMMIT: $(git log --format="%C(auto) %h - %s" | head -n 1)"
 
