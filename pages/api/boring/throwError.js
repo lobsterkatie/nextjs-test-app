@@ -1,9 +1,15 @@
 import * as Sentry from "@sentry/nextjs";
 
 const handler = async (req, res) => {
+  Sentry.configureScope((scope) => {
+    scope.setTag("configureScope", "throwError");
+  });
   // await fetch("http://www.nyt.com");
-  throw new Error("thrown in /throwError API route");
-  res.status(200).json({ name: "Maisey Dog" });
+  Sentry.withScope((scope) => {
+    Sentry.setTag("withScope", "throwError");
+    throw new Error("thrown in /throwError API route");
+    res.status(200).json({ name: "Maisey Dog" });
+  });
 };
 
 export default Sentry.withSentry(handler);
