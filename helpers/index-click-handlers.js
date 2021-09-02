@@ -36,7 +36,7 @@ export const fetchCallback = async () => {
   Sentry.getCurrentHub().getScope().setSpan(transaction);
 
   [
-    // "aardvark",
+    "aardvark",
     // "bear",
     // "canary",
     // "donkey",

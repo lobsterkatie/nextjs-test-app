@@ -1,4 +1,4 @@
-console.log("top top of pages/index.js");
+// console.log("top top of pages/index.js");
 
 import Head from "next/head";
 import * as nextRouter from "next/router";
@@ -21,10 +21,10 @@ import { LoadNewPageLink } from "../components/loadnewpagelink";
 Error.stackTraceLimit = Infinity;
 
 // Sentry.captureMessage("hi");
-console.log(
-  "in index.js Client defined:",
-  Sentry.getCurrentHub().getClient() !== undefined
-);
+// console.log(
+//   "in index.js Client defined:",
+//   Sentry.getCurrentHub().getClient() !== undefined
+// );
 // console.log(new Error("index page error").stack);
 
 export default function Home() {
@@ -80,24 +80,46 @@ export default function Home() {
           id="throw-API-error-button"
           onClick={() => fetch("/api/boring/throwError")}
         >
-          Click me to throw an error in an API route
+          Click me to throw an error in an API route handler
+        </button>
+
+        <button
+          id="API-rejection-button"
+          onClick={() => fetch("/api/boring/reject")}
+        >
+          Click me to trigger a promise rejection in an API route handler
         </button>
 
         <button
           id="capture-API-error-button"
           onClick={() => fetch("/api/boring/captureException")}
         >
-          Click me to call Sentry.captureException() in an API route
+          Click me to call Sentry.captureException() in an API route handler
         </button>
 
         <button
-          id="link-to-other-page"
-          // onClick={() => outerFunc(linkToOtherPageCallback)}
+          id="throw-API-error-outside-button"
+          onClick={() => fetch("/api/boring/throwErrorOutside")}
         >
-          Click
-          <LoadNewPageLink href={"/level-one/other-page"}>here</LoadNewPageLink>
-          to link to another page using an LoadNewPageLink.
+          Click me to throw an error in an API route outside of the handler
         </button>
+
+        <button
+          id="API-rejection-outside-button"
+          onClick={() => fetch("/api/boring/rejectOutside")}
+        >
+          Click me to trigger a promise rejection in an API route outside of the
+          handler
+        </button>
+
+        <LoadNewPageLink href={"/level-one/other-page"}>
+          <button
+            id="link-to-other-page"
+            // onClick={() => outerFunc(linkToOtherPageCallback)}
+          >
+            Click here to link to another page using an LoadNewPageLink.
+          </button>
+        </LoadNewPageLink>
         <button
           id="link-to-other-page-with-link-component"
           // onClick={() => outerFunc(linkToOtherPageCallback)}
@@ -176,10 +198,10 @@ export default function Home() {
 export async function getStaticProps() {
   // grab data from somewhere
 
-  console.log(
-    "\nI'm in getStaticProps for the home page. Client defined:",
-    Sentry.getCurrentHub().getClient() !== undefined
-  );
+  // console.log(
+  //   "\nI'm in getStaticProps for the home page. Client defined:",
+  //   Sentry.getCurrentHub().getClient() !== undefined
+  // );
   // if (Sentry.getCurrentHub().getClient() !== undefined) {
   //   console.log(
   //     "__SENTRY__.hub.getClient()",

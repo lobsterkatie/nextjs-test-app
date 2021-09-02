@@ -1,10 +1,9 @@
 import * as Sentry from "@sentry/nextjs";
 
+Promise.reject(new Error("promise rejected outside of handler"));
+
 const handler = async (req, res) => {
   await fetch("http://www.nyt.com");
-  Sentry.captureException(
-    new Error("manually captured in /captureException API route")
-  );
   res.status(200).json({ name: "Maisey Dog" });
 };
 

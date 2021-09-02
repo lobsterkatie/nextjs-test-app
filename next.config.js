@@ -6,7 +6,7 @@
 const { withSentryConfig } = require("@sentry/nextjs");
 const withBundleAnalyzer = require("@next/bundle-analyzer")();
 
-console.log("in next.config.js");
+// console.log("in next.config.js");
 
 const moduleExports = {
   // in next 10, to force webpack 5
@@ -18,7 +18,11 @@ const moduleExports = {
   // webpack5: false,
 
   publicRuntimeConfig: { dogs: "yes", cats: "maybe" },
+  // target: "experimental-serverless-trace",
+  // target: "serverless",
 };
+
+moduleExportsFunction = (phase, config) => ({ ...config, ...moduleExports });
 
 const SentryWebpackPluginOptions = {
   // Additional config options for the Sentry Webpack plugin. Keep in mind that
@@ -29,15 +33,21 @@ const SentryWebpackPluginOptions = {
   // For all available options, see:
   // https://github.com/getsentry/sentry-webpack-plugin#options.
   dryRun: true,
+  // dryRun: false,
   org: "testorg-az",
   url: "https://sentry.io/",
   project: "kmclb-js",
   silent: true,
+  // silent: false,
 };
 
 // Make sure adding Sentry options is the last code to run before exporting, to
 // ensure that your source maps include changes from all other Webpack plugins
-module.exports = withSentryConfig(moduleExports, SentryWebpackPluginOptions);
+// module.exports = withSentryConfig(moduleExports, SentryWebpackPluginOptions);
+module.exports = withSentryConfig(
+  moduleExportsFunction,
+  SentryWebpackPluginOptions
+);
 // module.exports = withBundleAnalyzer(
 //   withSentryConfig(moduleExports, SentryWebpackPluginOptions)
 // );

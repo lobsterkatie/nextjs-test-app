@@ -4,9 +4,10 @@ const handler = async (req, res) => {
   Sentry.configureScope((scope) => {
     scope.setTag("configureScope", "no error");
   });
-  // await fetch("http://www.nyt.com");
+  debugger;
+  await fetch("http://www.nyt.com");
   Sentry.withScope((scope) => {
-    scope.setTag("withScope", "no error");
+    scope.setTag("withScope", "withScopeNoError");
     res.status(200).json({ name: "Maisey Dog" });
   });
 };
