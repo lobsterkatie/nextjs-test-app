@@ -14,6 +14,7 @@
 # echo "ls .next/static"
 # ls .next/static || exit 0
 
-if [[ -f .next/analyze ]]; then
+# "e" for exists
+if [[ -e .next/analyze ]]; then
   mv .next/analyze/* public
 fi
