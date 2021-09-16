@@ -14,4 +14,6 @@
 # echo "ls .next/static"
 # ls .next/static || exit 0
 
-mv .next/analyze/* public
+ls .next
+cat next.config.js
+# mv .next/analyze/* public
