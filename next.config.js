@@ -20,6 +20,17 @@ const moduleExports = {
   publicRuntimeConfig: { dogs: "yes", cats: "maybe" },
   target: "experimental-serverless-trace",
   // target: "serverless",
+
+  webpack: (config, buildContext) => {
+    if (buildContext.isServer) {
+      config.resolve = { ...config.resolve };
+      config.resolve.alias = {
+        ...config.resolve.alias,
+        "@sentry/cli": false,
+      };
+    }
+    return config;
+  },
 };
 
 moduleExportsFunction = (phase, config) => ({ ...config, ...moduleExports });
