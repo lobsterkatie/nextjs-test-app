@@ -18,7 +18,7 @@ const moduleExports = {
   // webpack5: false,
 
   publicRuntimeConfig: { dogs: "yes", cats: "maybe" },
-  // target: "experimental-serverless-trace",
+  target: "experimental-serverless-trace",
   // target: "serverless",
 };
 
