@@ -13,3 +13,5 @@
 # echo " "
 # echo "ls .next/static"
 # ls .next/static || exit 0
+
+mv .next/analyze/* public
