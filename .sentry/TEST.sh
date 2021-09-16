@@ -16,12 +16,13 @@
 
 # "e" for exists
 if [[ -e .next/analyze ]]; then
+  echo " "
   echo "Moving bundle analysis graphs from \`.next/analyze\` to \`/public\`"
   mv .next/analyze/* public
-  ls public
 fi
 if [[ -e .next/server/analyze/ ]]; then
+  echo " "
   echo "Moving bundle analysis graphs from \`.next/server/analyze/\` to \`/public\`"
   mv .next/server/analyze/* public
-  ls public
+  echo " "
 fi
