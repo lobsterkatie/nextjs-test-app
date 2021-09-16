@@ -14,6 +14,6 @@
 # echo "ls .next/static"
 # ls .next/static || exit 0
 
-ls .next
-cat next.config.js
-# mv .next/analyze/* public
+if [[ -f .next/analyze ]]; then
+  mv .next/analyze/* public
+fi
