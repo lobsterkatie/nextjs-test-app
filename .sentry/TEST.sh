@@ -14,12 +14,14 @@
 # echo "ls .next/static"
 # ls .next/static || exit 0
 
-ls .next/analyze
-
 # "e" for exists
 if [[ -e .next/analyze ]]; then
-  echo "Moving bundle analysis graphs to \`/public\`"
-  mv .next/analyze/* ./public
+  echo "Moving bundle analysis graphs from \`.next/analyze\` to \`/public\`"
+  mv .next/analyze/* public
   ls public
-  ls ./public
+fi
+if [[ -e .next/server/analyze/ ]]; then
+  echo "Moving bundle analysis graphs from \`.next/server/analyze/\` to \`/public\`"
+  mv .next/server/analyze/* public
+  ls public
 fi
