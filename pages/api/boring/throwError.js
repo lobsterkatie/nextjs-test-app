@@ -1,6 +1,11 @@
 import * as Sentry from "@sentry/nextjs";
 
+const work = () => {
+  throw new Error("thrown inside of the work function");
+};
+
 const handler = async (req, res) => {
+  work();
   throw new Error("thrown in /throwError API route first thing");
   Sentry.configureScope((scope) => {
     scope.setTag("configureScope", "throwError");
