@@ -1,4 +1,4 @@
-console.log("top top of pages/level-one/[param1]/[param2].js");
+// console.log("top top of pages/level-one/[param1]/[param2].js");
 
 import * as nextRouter from "next/router";
 import { LoadNewPageLink } from "../../../components/loadnewpagelink";
@@ -7,10 +7,10 @@ import * as Sentry from "@sentry/nextjs";
 export default function LevelOneParam1Param2() {
   const homeURL = "/";
   const router = nextRouter.useRouter();
-  console.log(
-    "in LevelOneParam1Param2. Client defined:",
-    Sentry.getCurrentHub().getClient() !== undefined
-  );
+  // console.log(
+  //   "in LevelOneParam1Param2. Client defined:",
+  //   Sentry.getCurrentHub().getClient() !== undefined
+  // );
   // throw new Error("Error from /level-one/[param1]/[param2]");
   return (
     <div>

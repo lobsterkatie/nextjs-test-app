@@ -1,15 +1,14 @@
-console.log("top top of pages/level-one/[param1].js");
+// console.log("top top of pages/level-one/[param1].js");
 
 import { default as NextLink } from "next/link";
 import { useRouter } from "next/router";
 import { LoadNewPageLink } from "../../components/loadnewpagelink";
 import * as Sentry from "@sentry/nextjs";
 
-
 export default function Param1Page() {
   const homeURL = "/";
   const router = useRouter();
-  console.log("I'm in Param1Page");
+  // console.log("I'm in Param1Page");
   return (
     <div>
       This is the dynamic route `level-one/[param1]` Click

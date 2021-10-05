@@ -1,5 +1,5 @@
 import "../styles/globals.css";
-console.log("top top of _app.js");
+// console.log("top top of _app.js");
 
 import * as Sentry from "@sentry/nextjs";
 
@@ -17,11 +17,10 @@ import piglatin from "pig-latin";
 // Sentry.captureMessage("in _app.js");
 
 function MyApp({ Component, pageProps }) {
-  console.log(
-    `\n${piglatin("I'm in MyApp, about to render the app.")} Client defined:`,
-    Sentry.getCurrentHub().getClient() !== undefined
-    // sentryServerConfig.num
-  );
+  // console.log(
+  //   `\n${piglatin("I'm in MyApp, about to render the app.")} Client defined:`,
+  //   Sentry.getCurrentHub().getClient() !== undefined
+  // );
   // console.log(new Error("in MyApp component").stack);
   // console.log(Component);
   // console.log(
@@ -83,3 +82,32 @@ function MyApp({ Component, pageProps }) {
 // x.__sentry = true;
 
 export default MyApp;
+
+export async function getStaticProps() {
+  // x = x + 1;
+  // grab data from somewhere
+
+  // console.log(
+  //   "\nI'm in getStaticProps for _app. Client defined:",
+  //   Sentry.getCurrentHub().getClient() !== undefined
+  // );
+  // console.log("x = ", x);
+  // if (x > 1) {
+  //   console.log("about to throw error");
+  //   const err = new Error("in in getStaticProps for _app");
+  //   console.log(err.stack);
+  //   throw err;
+  // }
+  // console.log(
+  //   "Sentry client defined:",
+  //   Sentry.getCurrentHub().getClient() !== undefined
+  // );
+  // Sentry.captureException(new Error("in getStaticProps for OtherPage"));
+
+  // whatever is returned in props ends up as props on the page component (which in
+  // our case means as arguments to the function, since this is a functional component)
+  return {
+    props: { color: "red" },
+    revalidate: 1,
+  };
+}

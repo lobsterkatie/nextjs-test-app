@@ -16,11 +16,11 @@ const handler = async (req, res) => {
       b: ["bear", "baboon", "boa costrictor"],
     });
   });
-  console.log(
-    "\nI'm in the animal facts api route. Client defined:",
-    Sentry.getCurrentHub().getClient() !== undefined
-  );
-  console.log(new Error("").stack);
+  // console.log(
+  //   "\nI'm in the animal facts api route. Client defined:",
+  //   Sentry.getCurrentHub().getClient() !== undefined
+  // );
+  // console.log(new Error("").stack);
   // throw new Error("in API route");
   await fetch(`http://www.nyt.com?animal=${req.query.animal}`);
   res.status(200).json({ name: "Maisey Dog" });

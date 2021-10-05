@@ -18,10 +18,10 @@ Error.stackTraceLimit = Infinity;
 const handler = async (req, res) => {
   debugger;
   // setImmediate(stuff);
-  console.log(
-    "\nI'm in the api route. Client defined:",
-    Sentry.getCurrentHub().getClient() !== undefined
-  );
+  // console.log(
+  //   "\nI'm in the api route. Client defined:",
+  //   Sentry.getCurrentHub().getClient() !== undefined
+  // );
   // throw new Error("in /hello API route");
   // Sentry.captureException(new Error("in /hello API route"));
   // Sentry.captureException(new Error("in /hello API route 2"));

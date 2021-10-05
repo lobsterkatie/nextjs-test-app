@@ -1,6 +1,6 @@
 // console.log("in sentry.client.config.js");
 import * as Sentry from "@sentry/nextjs";
-// import * as SentryTracing from "@sentry/tracing";
+import * as SentryTracing from "@sentry/tracing";
 import getConfig from "next/config";
 import { RewriteFrames } from "@sentry/integrations";
 
@@ -13,12 +13,11 @@ Sentry.init({
   dsn: "https://c3d3206b71704aebbe717d5d4dbfe0bd@o87286.ingest.sentry.io/5397699",
   debug: true,
   // release: "off.leash.trail",
-  // tracesSampleRate: 1,
+  tracesSampleRate: 1,
   autoSessionTracking: false,
-  // integrations: [
-  //   // @ts-ignore we export server types but integrations only live on browser
-  //   new Sentry.Integrations.BrowserTracing({ tracingOrigins: [".*"] }),
-  // ],
+  integrations: [
+    new SentryTracing.Integrations.BrowserTracing({ tracingOrigins: [".*"] }),
+  ],
   beforeSend: (event) => {
     console.log("in browser beforeSend!");
     // return null;
