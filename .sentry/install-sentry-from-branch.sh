@@ -161,4 +161,6 @@
 #
 # # yarn
 
+env | sort
+
 yarn
