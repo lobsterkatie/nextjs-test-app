@@ -19,7 +19,7 @@ const moduleExports = {
   // webpack5: false,
 
   publicRuntimeConfig: { dogs: "yes", cats: "maybe" },
-  // target: "experimental-serverless-trace",
+  target: "experimental-serverless-trace",
   // target: "serverless",
 
   webpack: (config, buildContext) => {
@@ -56,10 +56,12 @@ const SentryWebpackPluginOptions = {
 // Make sure adding Sentry options is the last code to run before exporting, to
 // ensure that your source maps include changes from all other Webpack plugins
 // module.exports = withSentryConfig(moduleExports, SentryWebpackPluginOptions);
+
 module.exports = withSentryConfig(
   moduleExportsFunction,
   SentryWebpackPluginOptions
 );
+
 // module.exports = withBundleAnalyzer(
 //   withSentryConfig(moduleExports, SentryWebpackPluginOptions)
 // );

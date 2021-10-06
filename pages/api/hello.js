@@ -31,4 +31,20 @@ const handler = async (req, res) => {
   res.status(200).json({ name: "Maisey Dog" });
 };
 
-export default Sentry.withSentry(handler);
+module.exports.default = Sentry.withSentry(handler);
+// console.log(exports.default);
+debugger;
+// throw exports.default;
+// exports.withSentry = exports.default;
+
+exports.withSentry = async function (event, context, callback) {
+  console.log("IN AWS HANDLER");
+  console.log(event);
+  console.log(context);
+  console.log(callback);
+  return {
+    statusCode: 200,
+    headers: {},
+    body: "Hello world",
+  };
+};
