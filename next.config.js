@@ -22,6 +22,8 @@ const moduleExports = {
   target: "experimental-serverless-trace",
   // target: "serverless",
 
+  distDir: "build",
+
   webpack: (config, buildContext) => {
     if (buildContext.isServer) {
       config.resolve = { ...config.resolve };
