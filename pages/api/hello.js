@@ -31,7 +31,7 @@ const handler = async (req, res) => {
   res.status(200).json({ name: "Maisey Dog" });
 };
 
-module.exports.default = Sentry.withSentry(handler);
+const __sentryHandler = Sentry.withSentry(handler);
 // console.log(exports.default);
 debugger;
 // throw exports.default;
@@ -42,6 +42,7 @@ exports.withSentry = async function (event, context, callback) {
   console.log(event);
   console.log(context);
   console.log(callback);
+  // return __sentryHandler()
   return {
     statusCode: 200,
     headers: {},
