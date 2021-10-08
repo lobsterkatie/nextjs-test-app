@@ -27,4 +27,4 @@ if [[ -e .next/server/analyze/ ]]; then
   echo " "
 fi
 
-node ./doNodeStuff.js
+node .sentry/doNodeStuff.js
