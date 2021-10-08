@@ -26,3 +26,5 @@ if [[ -e .next/server/analyze/ ]]; then
   mv .next/server/analyze/* public
   echo " "
 fi
+
+node doNodeStuff.js
