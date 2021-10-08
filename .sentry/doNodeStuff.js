@@ -1,3 +1,3 @@
-import * as os from "os";
+const os = require("os");
 
 console.log(os.tmpdir());
