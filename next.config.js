@@ -46,13 +46,15 @@ const SentryWebpackPluginOptions = {
   //   urlPrefix, include, ignore
   // For all available options, see:
   // https://github.com/getsentry/sentry-webpack-plugin#options.
-  dryRun: true,
-  // dryRun: false,
+
   org: "testorg-az",
   url: "https://sentry.io/",
   project: "kmclb-js",
-  silent: true,
-  // silent: false,
+
+  // dryRun: true,
+  // silent: true,
+  dryRun: false,
+  silent: false,
 };
 
 // Make sure adding Sentry options is the last code to run before exporting, to
