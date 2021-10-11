@@ -1,3 +1,3 @@
-const os = require("os");
-
-console.log(os.tmpdir());
+// const os = require("os");
+//
+// console.log(os.tempdir());
