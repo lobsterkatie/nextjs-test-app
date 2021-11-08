@@ -1,6 +1,7 @@
 import NextErrorComponent from "next/error";
 
 import * as Sentry from "@sentry/nextjs";
+import * as SentryUtils from "@sentry/utils";
 
 const MyError = ({ statusCode, hasGetInitialPropsRun, err }) => {
   console.log("In custom error component");
@@ -9,7 +10,19 @@ const MyError = ({ statusCode, hasGetInitialPropsRun, err }) => {
     // https://github.com/vercel/next.js/issues/8592. As a workaround, we pass
     // err via _app.js so it can be captured
     console.log("capturing exception directly in _error component");
-    Sentry.captureException(err);
+    Sentry.withScope((scope) => {
+      scope.addEventProcessor((event) => {
+        SentryUtils.addExceptionMechanism(event, {
+          type: "instrument",
+          handled: true,
+          data: {
+            function: "_error.customErrorComponent",
+          },
+        });
+        return event;
+      });
+      Sentry.captureException(err);
+    });
     // Flushing is not required in this case as it only happens on the client
   }
 
@@ -41,8 +54,19 @@ MyError.getInitialProps = async ({ res, err, asPath }) => {
 
   if (err) {
     console.log("capturing exception in _error component's getInitialProps");
-
-    Sentry.captureException(err);
+    Sentry.withScope((scope) => {
+      scope.addEventProcessor((event) => {
+        SentryUtils.addExceptionMechanism(event, {
+          type: "instrument",
+          handled: true,
+          data: {
+            function: "_error.getInitialProps",
+          },
+        });
+        return event;
+      });
+      Sentry.captureException(err);
+    });
 
     // Flushing before returning is necessary if deploying to Vercel, see
     // https://vercel.com/docs/platform/limits#streaming-responses
@@ -54,9 +78,22 @@ MyError.getInitialProps = async ({ res, err, asPath }) => {
   // If this point is reached, getInitialProps was called without any
   // information about what the error might be. This is unexpected and may
   // indicate a bug introduced in Next.js, so record it in Sentry
-  Sentry.captureException(
-    new Error(`_error.js getInitialProps missing data at path: ${asPath}`)
-  );
+  Sentry.withScope((scope) => {
+    scope.addEventProcessor((event) => {
+      SentryUtils.addExceptionMechanism(event, {
+        type: "instrument",
+        handled: true,
+        data: {
+          function: "_error.getInitialProps",
+        },
+      });
+      return event;
+    });
+    Sentry.captureException(
+      new Error(`_error.js getInitialProps missing data at path: ${asPath}`)
+    );
+  });
+
   await Sentry.flush(2000);
 
   return errorInitialProps;
