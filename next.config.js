@@ -19,17 +19,17 @@ const moduleExports = {
   // webpack5: false,
 
   publicRuntimeConfig: { dogs: "yes", cats: "maybe" },
-  target: "experimental-serverless-trace",
+  // target: "experimental-serverless-trace",
   // target: "serverless",
 
-  distDir: "build",
+  // distDir: "build",
 
   webpack: (config, buildContext) => {
     if (buildContext.isServer) {
       config.resolve = { ...config.resolve };
       config.resolve.alias = {
         ...config.resolve.alias,
-        "@sentry/cli": false,
+        // "@sentry/cli": false,
       };
     }
     return config;
@@ -51,10 +51,10 @@ const SentryWebpackPluginOptions = {
   url: "https://sentry.io/",
   project: "kmclb-js",
 
-  // dryRun: true,
-  // silent: true,
-  dryRun: false,
-  silent: false,
+  dryRun: true,
+  silent: true,
+  // dryRun: false,
+  // silent: false,
 };
 
 // Make sure adding Sentry options is the last code to run before exporting, to
