@@ -128,6 +128,69 @@ export default function Home() {
             <a>I'm a next-provided Link to the other page.</a>
           </Link>
         </button>
+        <p>getStaticProps</p>
+        <button>
+          <Link href="/boring/getStaticPropsNoError">
+            <a>Use a Link to go to /boring/getStaticPropsNoError.</a>
+          </Link>
+        </button>
+        <button>
+          <a href="/boring/getStaticPropsNoError">
+            Go to /boring/getStaticPropsNoError.
+          </a>
+        </button>
+        <button>
+          <Link href="/boring/getStaticPropsError">
+            <a>Use a Link to go to /boring/getStaticPropsError.</a>
+          </Link>
+        </button>
+        <button>
+          <a href="/boring/getStaticPropsError">
+            Go to /boring/getStaticPropsError.
+          </a>
+        </button>
+        <p>getInitialProps</p>
+        <button>
+          <Link href="/boring/getInitialPropsNoError">
+            <a>Use a Link to go to /boring/getInitialPropsNoError.</a>
+          </Link>
+        </button>
+        <button>
+          <a href="/boring/getInitialPropsNoError">
+            Go to /boring/getInitialPropsNoError.
+          </a>
+        </button>
+        <button>
+          <Link href="/boring/getInitialPropsError">
+            <a>Use a Link to go to /boring/getInitialPropsError.</a>
+          </Link>
+        </button>
+        <button>
+          <a href="/boring/getInitialPropsError">
+            Go to /boring/getInitialPropsError.
+          </a>
+        </button>
+        <p>getServerSideProps</p>
+        <button>
+          <Link href="/boring/getServerSidePropsNoError">
+            <a>Use a Link to go to /boring/getServerSidePropsNoError.</a>
+          </Link>
+        </button>
+        <button>
+          <a href="/boring/getServerSidePropsNoError">
+            Go to /boring/getServerSidePropsNoError.
+          </a>
+        </button>
+        <button>
+          <Link href="/boring/getServerSidePropsError">
+            <a>Use a Link to go to /boring/getServerSidePropsError.</a>
+          </Link>
+        </button>
+        <button>
+          <a href="/boring/getServerSidePropsError">
+            Go to /boring/getServerSidePropsError.
+          </a>
+        </button>
         <button id="client-bundle">
           <Link href="/client.html">
             <a>See the client bundle analysis.</a>
