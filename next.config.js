@@ -2,12 +2,16 @@
 // with Sentry.
 // https://nextjs.org/docs/api-reference/next.config.js/introduction
 // https://docs.sentry.io/platforms/javascript/guides/nextjs/
+console.log("in next.config.js - randomNumber:", process.env.randomNumber);
 
 const { withSentryConfig } = require("@sentry/nextjs");
 const withBundleAnalyzer = require("@next/bundle-analyzer")();
 const path = require("path");
 
-// console.log("in next.config.js");
+console.log(
+  "finished iimporting SDK in next.config.js - randomNumber:",
+  process.env.randomNumber
+);
 
 const moduleExports = {
   // in next 10, to force webpack 5
@@ -24,16 +28,16 @@ const moduleExports = {
 
   // distDir: "build",
 
-  webpack: (config, buildContext) => {
-    if (buildContext.isServer) {
-      config.resolve = { ...config.resolve };
-      config.resolve.alias = {
-        ...config.resolve.alias,
-        // "@sentry/cli": false,
-      };
-    }
-    return config;
-  },
+  // webpack: (config, buildContext) => {
+  //   if (buildContext.isServer) {
+  //     config.resolve = { ...config.resolve };
+  //     config.resolve.alias = {
+  //       ...config.resolve.alias,
+  //       // "@sentry/cli": false,
+  //     };
+  //   }
+  //   return config;
+  // },
 };
 
 moduleExportsFunction = (phase, config) => ({ ...config, ...moduleExports });
