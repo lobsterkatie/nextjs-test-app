@@ -1,10 +1,10 @@
-# echo " "
-# echo "ls"
-# ls
-# echo " "
-# echo "ls .next"
-# ls .next
-# echo " "
+echo " "
+echo "ls"
+ls
+echo " "
+echo "ls .next"
+ls .next
+echo " "
 # echo "ls .next/server"
 # ls .next/server || exit 0
 # echo " "
