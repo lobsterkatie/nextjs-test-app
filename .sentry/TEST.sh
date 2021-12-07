@@ -1,8 +1,8 @@
 echo " "
-echo "ls"
+echo "ls -a"
 ls
 echo " "
-echo "ls .next"
+echo "ls -a .next"
 ls .next
 echo " "
 # echo "ls .next/server"
