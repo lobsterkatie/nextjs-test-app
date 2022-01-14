@@ -39,6 +39,11 @@ MyError.getInitialProps = async ({ res, err, asPath }) => {
   // getInitialProps has run
   errorInitialProps.hasGetInitialPropsRun = true;
 
+  // we don't want to log these in Sentry, so at this point we're done
+  if (res.statusCode === 404) {
+    return errorInitialProps;
+  }
+
   // Running on the server, the response object (`res`) is available.
   //
   // Next.js will pass an err on the server if a page's data fetching methods
