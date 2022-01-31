@@ -17,7 +17,7 @@ source .sentry/set-branch-name.sh
 # shopt xpg_echo
 # shopt -s xpg_echo
 # shopt xpg_echo
-# env | sort
+env | sort
 
 echo " "
 echo "CLONING SDK REPO"
