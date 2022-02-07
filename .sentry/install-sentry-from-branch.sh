@@ -56,7 +56,7 @@ PACKAGES_DIR="$REPO_DIR/packages"
 
 # escape all of the slashes in the path for use in sed
 ESCAPED_PACKAGES_DIR=$(echo $PACKAGES_DIR | sed s/'\/'/'\\\/'/g)
-echo $ESCAPED_PACKAGES_DIR
+echo "local packages directory:", $ESCAPED_PACKAGES_DIR
 
 # get the names of all of the packages
 package_names=()
