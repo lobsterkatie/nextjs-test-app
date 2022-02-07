@@ -88,7 +88,7 @@ echo "MOVING BACK TO PROJECT DIRECTORY"
 cd $PROJECT_DIR
 
 INFINITE_STACKTRACE_CODE="
-Error.stackTraceLimit = Infinity;
+// Error.stackTraceLimit = Infinity;
   "
 
 SDK_COMMIT_MESSAGE=$(cd sentry-javascript && git log --format="%C(auto)%s" | head -n 1)
