@@ -81,6 +81,8 @@ for package in ${package_names[@]}; do
   done
 done
 
+cat ./packages/react/package.json
+
 # set +x
 
 echo " "
