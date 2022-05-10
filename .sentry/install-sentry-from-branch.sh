@@ -82,7 +82,7 @@ for package in ${package_names[@]}; do
 done
 
 pwd
-cat ./packages/react/package.json
+cat package.json
 
 # set +x
 
