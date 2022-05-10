@@ -40,9 +40,9 @@ echo " "
 echo "BUILDING SDK"
 # we need to build es5 versions because `next.config.js` calls `require` on the SDK (to get `withSentryConfig`) and
 # therefore it looks for `dist/index.js`
-yarn build:es5
+yarn build:dev
 # we need to build esm versions because that's what `next` actually uses when it builds the app
-yarn build:esm
+# yarn build:esm
 
 # Set all packages in the repo to point to their siblings as file dependencies.
 # That way, when we install the local copy of @sentry/nextjs, it'll pull the
@@ -88,7 +88,7 @@ echo "MOVING BACK TO PROJECT DIRECTORY"
 cd $PROJECT_DIR
 
 INFINITE_STACKTRACE_CODE="
-// Error.stackTraceLimit = Infinity;
+Error.stackTraceLimit = Infinity;
   "
 
 SDK_COMMIT_MESSAGE=$(cd sentry-javascript && git log --format="%C(auto)%s" | head -n 1)
