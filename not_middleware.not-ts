@@ -1,0 +1,19 @@
+// import type { NextFetchEvent, NextRequest } from "next/server";
+// import { withSentry } from "@sentry/nextjs";
+//
+// type NextMiddleware = (
+//   request: NextRequest,
+//   event: NextFetchEvent
+// ) => Promise<Response | undefined> | Response | undefined;
+//
+// type wrappedNextMiddleware = NextMiddleware;
+//
+// function existingMiddleware(req: NextRequest, ev: NextFetchEvent) {
+//   return new Response("Hello, world!");
+// }
+//
+// function wrapMiddleware(
+//   origMiddleware: NextMiddleware
+// ): wrappedNextMiddleware {}
+
+// export default {};

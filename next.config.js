@@ -2,16 +2,11 @@
 // with Sentry.
 // https://nextjs.org/docs/api-reference/next.config.js/introduction
 // https://docs.sentry.io/platforms/javascript/guides/nextjs/
-console.log("in next.config.js - randomNumber:", process.env.randomNumber);
 
+// const { withSentryConfig } = require("@sentry/nextjs/build/cjs/config");
 const { withSentryConfig } = require("@sentry/nextjs");
 const withBundleAnalyzer = require("@next/bundle-analyzer")();
 const path = require("path");
-
-console.log(
-  "finished iimporting SDK in next.config.js - randomNumber:",
-  process.env.randomNumber
-);
 
 const moduleExports = {
   // in next 10, to force webpack 5
@@ -22,25 +17,39 @@ const moduleExports = {
   // in next 11, to force webpack 4
   // webpack5: false,
 
+  // experimental: {
+  //   outputStandalone: true,
+  // },
+
   publicRuntimeConfig: { dogs: "yes", cats: "maybe" },
   // target: "experimental-serverless-trace",
   // target: "serverless",
 
   // distDir: "build",
 
-  // webpack: (config, buildContext) => {
-  //   if (buildContext.isServer) {
-  //     config.resolve = { ...config.resolve };
-  //     config.resolve.alias = {
-  //       ...config.resolve.alias,
-  //       // "@sentry/cli": false,
-  //     };
-  //   }
-  //   return config;
-  // },
+  webpack: (config, buildContext) => {
+    console.log(buildContext);
+    if (buildContext.isServer) {
+      config.resolve = { ...config.resolve };
+      config.resolve.alias = {
+        ...config.resolve.alias,
+        // "@sentry/cli": false,
+        // "@sentry/utils/esm/buildPolyfills":
+        //   "@sentry/utils/build/esm/buildPolyfills/build",
+      };
+    }
+    return config;
+  },
+  sentry: {
+    configDir: "sentryConfig",
+    // hideSourceMaps: true,
+  },
 };
 
-moduleExportsFunction = (phase, config) => ({ ...config, ...moduleExports });
+const moduleExportsFunction = (phase, config) => ({
+  ...config,
+  ...moduleExports,
+});
 
 const SentryWebpackPluginOptions = {
   // Additional config options for the Sentry Webpack plugin. Keep in mind that

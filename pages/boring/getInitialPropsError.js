@@ -1,12 +1,14 @@
 import * as Sentry from "@sentry/nextjs";
 
-let y = 0;
+let y = 3;
 
-export default function GetInitialPropsErrorPage(color = "blue") {
-  return <div>Error in GetIntialPropsErrorPage</div>;
+export default function GetInitialPropsErrorPage(
+  { color } = { color: "blue" }
+) {
+  return <div>Error in GetIntialPropsErrorPage. The color is {color}.</div>;
 }
 
-export async function getInitialProps() {
+GetInitialPropsErrorPage.getInitialProps = async (ctx) => {
   console.log("In GetInitialPropErrorPage's getInitialProps");
 
   y = y + 1;
@@ -20,4 +22,8 @@ export async function getInitialProps() {
     // debugger;
     throw err;
   }
-}
+
+  return {
+    color: "red",
+  };
+};

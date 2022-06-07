@@ -1,11 +1,12 @@
 import * as Sentry from "@sentry/nextjs";
 
-let y = 0;
-
-export default function GetServerSidePropsNoError(color = "blue") {
+export default function GetServerSidePropsNoError(
+  { color } = { color: "blue" }
+) {
   return (
     <div>
       <p>GetServerSidePropsNoError</p>
+      <p>The color is {color}.</p>
       <p>
         Go <a href="/">home</a>
       </p>

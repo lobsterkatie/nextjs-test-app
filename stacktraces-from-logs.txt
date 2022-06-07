@@ -1,3 +1,11 @@
+[GET] /api/hello
+21:24:25:24
+Status:
+200
+Duration:
+495.60 ms
+Init Duration:
+411.20 ms
 Memory Used:
 99 MB
 ID:
@@ -11,3 +19,45 @@ Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like 
     at Object.Module._extensions..js (internal/modules/cjs/loader.js:1097:10)
     at Module.load (internal/modules/cjs/loader.js:933:32)
     at Function.Module._load (internal/modules/cjs/loader.js:774:14)
+    at Module.require (internal/modules/cjs/loader.js:957:19)
+    at require (internal/modules/cjs/helpers.js:88:18)
+    at Object.8300 (/var/task/.next/server/pages/api/hello.js:43:18)
+    at __webpack_require__ (/var/task/.next/server/webpack-runtime.js:25:42)
+    at Object.689 (/var/task/.next/server/pages/api/hello.js:19:72)
+    at __webpack_require__ (/var/task/.next/server/webpack-runtime.js:25:42)
+    at __webpack_exec__ (/var/task/.next/server/pages/api/hello.js:53:52)
+    at /var/task/.next/server/pages/api/hello.js:54:52
+    at Object.<anonymous> (/var/task/.next/server/pages/api/hello.js:57:3)
+    at Module._compile (internal/modules/cjs/loader.js:1068:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1097:10)
+    at Module.load (internal/modules/cjs/loader.js:933:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:774:14)
+    at Module.require (internal/modules/cjs/loader.js:957:19)
+    at require (internal/modules/cjs/helpers.js:88:18)
+    at Server.handleApiRequest (/var/task/node_modules/next/dist/next-server/server/next-server.js:66:181)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async Object.fn (/var/task/node_modules/next/dist/next-server/server/next-server.js:58:580)
+    at async Router.execute (/var/task/node_modules/next/dist/next-server/server/router.js:25:67)
+    at async Server.run (/var/task/node_modules/next/dist/next-server/server/next-server.js:68:1042)
+    at async Server.handleRequest (/var/task/node_modules/next/dist/next-server/server/next-server.js:32:504)
+    at async Server.<anonymous> (/var/task/___next_launcher.js:32:9)
+cwd in wrappedHandlerGetter /var/task
+returning wrappedHandlerGetter
+I'm in the api route. Client defined: false
+stack Error
+    at handler (/var/task/.next/server/pages/api/hello.js:28:24)
+    at Object.<anonymous> (/var/task/node_modules/@sentry/nextjs/dist/utils/handlers.js:55:42)
+    at step (/var/task/node_modules/tslib/tslib.js:141:27)
+    at Object.next (/var/task/node_modules/tslib/tslib.js:122:57)
+    at /var/task/node_modules/tslib/tslib.js:115:75
+    at new Promise (<anonymous>)
+    at Object.__awaiter (/var/task/node_modules/tslib/tslib.js:111:16)
+    at /var/task/node_modules/@sentry/nextjs/dist/utils/handlers.js:12:49
+    at apiResolver (/var/task/node_modules/next/dist/next-server/server/api-utils.js:8:7)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async Server.handleApiRequest (/var/task/node_modules/next/dist/next-server/server/next-server.js:66:462)
+    at async Object.fn (/var/task/node_modules/next/dist/next-server/server/next-server.js:58:580)
+    at async Router.execute (/var/task/node_modules/next/dist/next-server/server/router.js:25:67)
+    at async Server.run (/var/task/node_modules/next/dist/next-server/server/next-server.js:68:1042)
+    at async Server.handleRequest (/var/task/node_modules/next/dist/next-server/server/next-server.js:32:504)
+    at async Server.<anonymous> (/var/task/___next_launcher.js:32:9)

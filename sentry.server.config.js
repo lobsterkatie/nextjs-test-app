@@ -31,7 +31,7 @@ Sentry.init({
   beforeSend: (event) => {
     console.log("in server beforeSend!");
     debugger;
-    event.contexts.device = { model: "iPhone 13 mini", family: "iPhone" };
+    // event.contexts.device = { model: "iPhone 13 mini", family: "iPhone" };
     try {
       console.log("Exception:", event.exception.values[0].value);
       event.exception.values[0].mechanism.description =
@@ -45,5 +45,9 @@ Sentry.init({
     return event;
   },
 });
+
+// debugger;
+// Sentry.startTransaction("called on Sentry");
+// Sentry.getCurrentHub().startTransaction("called on Hub instance");
 
 // Sentry.captureException(new Error("kangaroo"));

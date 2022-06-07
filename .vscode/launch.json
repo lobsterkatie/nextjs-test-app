@@ -5,9 +5,9 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "run `next dev`",
       "type": "pwa-node",
       "request": "launch",
-      "name": "run `next dev`",
       "skipFiles": [
         "<node_internals>/**"
       ],
@@ -29,37 +29,42 @@
       "internalConsoleOptions": "openOnSessionStart"
     },
     {
-      "type": "pwa-node",
-      "request": "launch",
       "name": "run `next start`",
+      "type": "pwa-node",
+      "preLaunchTask": "yarn build",
+      "request": "launch",
       "skipFiles": [
-        "<node_internals>/**"
+        "<node_internals>/**",
+        "**/node_modules/tslib/**/*",
+        "**/syncpromise.js"
       ],
       "runtimeArgs": ["--preserve-symlinks", "--trace-warnings"],
       "program": "${workspaceFolder}/node_modules/.bin/next",
       "args": ["start", "-p", "3001"],
-      // "outFiles": [
-      //   "${workspaceFolder}/**/*.js",
-      //   "!${workspaceFolder}/node_modules/**/*.js",
-      //   "${workspaceFolder}/node_modules/@sentry/**/*.js",
-      //   "${workspaceFolder}/node_modules/next/**/*.js",
-      // ],
-      // "resolveSourceMapLocations": [
-      //   "${workspaceFolder}/**",
-      //   "!**/node_modules/**",
-      //   "${workspaceFolder}/node_modules/next/dist/**",
-      //   "${workspaceFolder}/node_modules/@sentry/*/dist/**"
-      // ],
-      "preLaunchTask": "yarn build",
-      "internalConsoleOptions": "openOnSessionStart"
+      "sourceMaps": true,
+      "outFiles": [
+        "${workspaceFolder}/**/*.js",
+        "!${workspaceFolder}/node_modules/**/*.js",
+        "${workspaceFolder}/node_modules/@sentry/**/*.js",
+        "${workspaceFolder}/node_modules/next/**/*.js",
+      ],
+      "resolveSourceMapLocations": [
+        "${workspaceFolder}/**",
+        "!**/node_modules/**",
+        "${workspaceFolder}/node_modules/next/**",
+        "${workspaceFolder}/node_modules/@sentry/*/dist/**/*"
+      ],
+      "internalConsoleOptions": "openOnSessionStart",
+      // "trace": true
     },
     {
+      "name": "run `next build`",
       "type": "pwa-node",
       "request": "launch",
-      "name": "run `next build`",
-      // "skipFiles": [
-      //   "<node_internals>/**"
-      // ],
+      "skipFiles": [
+        "<node_internals>/**",
+        "${workspaceFolder}/node_modules/tslib/**"
+      ],
       "runtimeArgs": ["--preserve-symlinks", "--trace-warnings"],
       "program": "${workspaceFolder}/node_modules/.bin/next",
       "args": ["build"],
@@ -75,7 +80,8 @@
         "${workspaceFolder}/node_modules/next/dist/**",
         "${workspaceFolder}/node_modules/@sentry/*/dist/**"
       ],
-      "internalConsoleOptions": "openOnSessionStart"
+      "internalConsoleOptions": "openOnSessionStart",
+      // "outputCapture": "std"
     }
   ]
 }

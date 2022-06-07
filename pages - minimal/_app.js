@@ -110,3 +110,22 @@ export async function getStaticProps() {
     revalidate: 1,
   };
 }
+
+// // const __SENTRY_DEBUG__ = false;
+// //
+// // function isDebugBuild() {
+// //   return __SENTRY_DEBUG__;
+// // }
+// //
+// // function isFriday() {
+// //   return Sentry.__FRIDAY__;
+// // }
+//
+// const __FRIDAY__ = false;
+// function isFriday() {
+//   return __FRIDAY__;
+// }
+//
+// // const Monday = isFriday();
+// //
+// Sentry.isFriday() && console.log("racoon");
