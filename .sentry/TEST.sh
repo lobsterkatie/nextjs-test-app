@@ -30,6 +30,10 @@ echo "grepping for @sentry/cli"
 grep -lr '@sentry/cli' .next
 echo ""
 
+echo "grepping for transaction.initSpanRecorder"
+grep -lr 'transaction.initSpanRecorder' .next
+echo ""
+
 echo "grepping for deterministic version identifier"
 grep -lr 'deterministic version identifier' .next
 echo ""
