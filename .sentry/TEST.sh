@@ -9,7 +9,7 @@ echo "ls .next/server"
 ls .next/server || exit 0
 echo " "
 echo "ls .next/server/chunks"
-ls .next/server || exit 0
+ls .next/server/chunks || exit 0
 echo " "
 # echo "ls .next/serverless"
 # ls .next/serverless || exit 0
