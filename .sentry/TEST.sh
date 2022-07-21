@@ -30,6 +30,10 @@ echo "grepping for @sentry/cli"
 grep -lr '@sentry/cli' .next
 echo ""
 
+echo "grepping for deterministic version identifier"
+grep -lr 'deterministic version identifier' .next
+echo ""
+
 # "e" for exists
 if [[ -e .next/analyze ]]; then
   echo " "
