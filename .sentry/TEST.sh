@@ -14,11 +14,16 @@
 # echo "ls .next/static"
 # ls .next/static || exit 0
 
-echo "grepping for withSentry"
-grep -r 'withSentry' .next
+echo "grepping for trycatch"
+grep -r 'trycatch' .next
+echo ""
 
-echo "grepping for @sentry/cli code"
-grep -r 'deterministic version identifier' .next
+echo "grepping for @sentry/node"
+grep -r '@sentry/node' .next
+echo ""
+
+echo "grepping for @sentry/cli"
+grep -r '@sentry/cli' .next
 
 # "e" for exists
 if [[ -e .next/analyze ]]; then
