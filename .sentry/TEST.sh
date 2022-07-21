@@ -1,10 +1,10 @@
-echo " "
-echo "ls -a"
-ls
-echo " "
-echo "ls -a .next"
-ls .next
-echo " "
+# echo " "
+# echo "ls -a"
+# ls
+# echo " "
+# echo "ls -a .next"
+# ls .next
+# echo " "
 # echo "ls .next/server"
 # ls .next/server || exit 0
 # echo " "
@@ -13,6 +13,9 @@ echo " "
 # echo " "
 # echo "ls .next/static"
 # ls .next/static || exit 0
+
+echo "grepping for @sentry/cli code"
+grep -r 'deterministic version identifier' .next
 
 # "e" for exists
 if [[ -e .next/analyze ]]; then
