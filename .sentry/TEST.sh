@@ -2,28 +2,33 @@
 # echo "ls -a"
 # ls
 # echo " "
-# echo "ls -a .next"
-# ls .next
-# echo " "
-# echo "ls .next/server"
-# ls .next/server || exit 0
-# echo " "
+echo "ls -a .next"
+ls .next
+echo " "
+echo "ls .next/server"
+ls .next/server || exit 0
+echo " "
 # echo "ls .next/serverless"
 # ls .next/serverless || exit 0
 # echo " "
 # echo "ls .next/static"
 # ls .next/static || exit 0
 
-echo "grepping for trycatch"
-grep -r 'trycatch' .next
+echo "grepping for instrumentServer"
+grep -lr 'instrumentServer' .next
 echo ""
 
-echo "grepping for @sentry/node"
-grep -r '@sentry/node' .next
+echo "grepping for config/webpack"
+grep -lr 'config/webpack' .next
+echo ""
+
+echo "grepping for @sentry/core"
+grep -lr '@sentry/core' .next
 echo ""
 
 echo "grepping for @sentry/cli"
-grep -r '@sentry/cli' .next
+grep -lr '@sentry/cli' .next
+echo ""
 
 # "e" for exists
 if [[ -e .next/analyze ]]; then
