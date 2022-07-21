@@ -10,6 +10,7 @@ export const errorCallback = () => {
   // throw new Error("koala");
   try {
     throw new Error("koala");
+    // throw false;
   } catch (err) {
     Sentry.captureException(err);
   }

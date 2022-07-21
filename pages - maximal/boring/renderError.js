@@ -13,6 +13,7 @@ export default function RenderErrorPage({ color } = { color: "blue" }) {
   console.log(`in render function in RenderErrorPage. The color is ${color}`);
   if (!isBuild()) {
     console.log("about to throw error");
+    // throw false;
     throw new Error("renderError thrown in RenderErrorPage's render function");
   }
   return <div>This is a very simple page.</div>;

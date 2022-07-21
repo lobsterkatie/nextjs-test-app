@@ -31,7 +31,6 @@ export async function getStaticProps() {
     console.log("about to throw error");
     const err = new Error("in getStaticProps for GetStaticPropsErrorPage");
     //   console.log(err.stack);
-    debugger;
     throw err;
   }
 

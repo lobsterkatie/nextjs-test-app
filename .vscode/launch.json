@@ -26,7 +26,8 @@
         "${workspaceFolder}/node_modules/next/dist/**",
         "${workspaceFolder}/node_modules/@sentry/*/dist/**"
       ],
-      "internalConsoleOptions": "openOnSessionStart"
+      "internalConsoleOptions": "openOnSessionStart",
+      "smartStep": false
     },
     {
       "name": "run `next start`",
@@ -62,9 +63,10 @@
       "type": "pwa-node",
       "request": "launch",
       "skipFiles": [
-        "<node_internals>/**",
+        // "<node_internals>/**",
         "${workspaceFolder}/node_modules/tslib/**"
       ],
+      "smartStep": false,
       "runtimeArgs": ["--preserve-symlinks", "--trace-warnings"],
       "program": "${workspaceFolder}/node_modules/.bin/next",
       "args": ["build"],

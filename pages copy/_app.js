@@ -145,7 +145,7 @@ function appWithSentry(appComponent) {
   };
 }
 
-export default appWithSentry(MyApp);
-// export default Sentry.withSentry_app(MyApp);
+// export default appWithSentry(MyApp);
+export default Sentry.withSentry_app(MyApp);
 
 // NOTE: DATA-FETCHING METHODS HERE WILL BE IGNORED! DON'T BOTHER WRITING THEM.

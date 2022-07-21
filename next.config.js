@@ -7,6 +7,7 @@
 const { withSentryConfig } = require("@sentry/nextjs");
 const withBundleAnalyzer = require("@next/bundle-analyzer")();
 const path = require("path");
+const webpack = require("webpack");
 
 const moduleExports = {
   // in next 10, to force webpack 5
@@ -21,6 +22,8 @@ const moduleExports = {
   //   outputStandalone: true,
   // },
 
+  // output: "standalone",
+
   publicRuntimeConfig: { dogs: "yes", cats: "maybe" },
   // target: "experimental-serverless-trace",
   // target: "serverless",
@@ -28,7 +31,7 @@ const moduleExports = {
   // distDir: "build",
 
   webpack: (config, buildContext) => {
-    console.log(buildContext);
+    // console.log(buildContext);
     if (buildContext.isServer) {
       config.resolve = { ...config.resolve };
       config.resolve.alias = {
@@ -38,6 +41,14 @@ const moduleExports = {
         //   "@sentry/utils/build/esm/buildPolyfills/build",
       };
     }
+
+    // config.plugins.push(
+    //   new webpack.DefinePlugin({
+    //     __SENTRY_DEBUG__: false,
+    //     __SENTRY_TRACING__: false,
+    //   })
+    // );
+
     return config;
   },
   sentry: {

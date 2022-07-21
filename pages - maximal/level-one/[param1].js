@@ -4,10 +4,14 @@ import { default as NextLink } from "next/link";
 import { useRouter } from "next/router";
 import { LoadNewPageLink } from "../../components/loadnewpagelink";
 import * as Sentry from "@sentry/nextjs";
+import * as routerModule from "next/router";
 
-export default function Param1Page() {
+debugger;
+
+export default function Param1Page(pageContext) {
   const homeURL = "/";
   const router = useRouter();
+  debugger;
   // console.log("I'm in Param1Page");
   return (
     <div>
@@ -17,6 +21,9 @@ export default function Param1Page() {
       <br />
       Click <NextLink href={homeURL}>here</NextLink> to go back to the home page
       as a client-side navigation.
+      <button>
+        <a href="/">Go to homepage with a regular a-href link.</a>
+      </button>
     </div>
   );
 }
@@ -24,12 +31,11 @@ export default function Param1Page() {
 // only called on server, before rendering an SSR page
 export async function getServerSideProps() {
   // grab data from somewhere
-  debugger;
   console.log(
     "\nI'm in getServerSideProps for level-one/[param1]. Client defined:",
     Sentry.getCurrentHub().getClient() !== undefined
   );
-  throw new Error("in /level-one/[param1] getServerSideProps");
+  // throw new Error("in /level-one/[param1] getServerSideProps");
   // console.log(
   //   "Sentry client defined:",
   //   Sentry.getCurrentHub().getClient() !== undefined
@@ -40,7 +46,6 @@ export async function getServerSideProps() {
   // our case means as arguments to the function, since this is a functional component)
   return {
     props: { color: "red" },
-    revalidate: 1,
   };
 }
 

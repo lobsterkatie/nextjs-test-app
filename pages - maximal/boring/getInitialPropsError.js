@@ -15,9 +15,16 @@ GetInitialPropsErrorPage.getInitialProps = async (ctx) => {
   console.log("y = ", y);
   if (y > 1) {
     console.log("about to throw error");
-    const err = new Error(
-      "error thrown in GetInitialPropsError's getInitialProps"
-    );
+
+
+
+
+    const err = new Error("nope");
+
+
+
+
+    
     //   console.log(err.stack);
     // debugger;
     throw err;

@@ -1,12 +1,12 @@
 // console.log("in sentry.client.config.js");
 import * as Sentry from "@sentry/nextjs";
-import * as SentryPolyfills from "@sentry/utils/esm/buildPolyfills";
+// import * as SentryPolyfills from "@sentry/utils/esm/buildPolyfills";
 // import * as SentryTracing from "@sentry/tracing";
 import getConfig from "next/config";
 // import { RewriteFrames } from "@sentry/integrations";
 
-console.log({ SentryPolyfills: Object.keys(SentryPolyfills) });
-debugger;
+// console.log({ SentryPolyfills: Object.keys(SentryPolyfills) });
+// debugger;
 
 const { publicRuntimeConfig } = getConfig();
 // console.log("runtime config");

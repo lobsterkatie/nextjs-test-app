@@ -34,6 +34,7 @@ function MyApp(contextData) {
     router.route,
     router.isSSR
   );
+  debugger;
   console.log(isServer ? "" : "components: " + Object.keys(router.components));
   console.log("\n");
   // if (pageProps.statusCode !== 404) {
@@ -110,22 +111,3 @@ export async function getStaticProps() {
     revalidate: 1,
   };
 }
-
-// // const __SENTRY_DEBUG__ = false;
-// //
-// // function isDebugBuild() {
-// //   return __SENTRY_DEBUG__;
-// // }
-// //
-// // function isFriday() {
-// //   return Sentry.__FRIDAY__;
-// // }
-//
-// const __FRIDAY__ = false;
-// function isFriday() {
-//   return __FRIDAY__;
-// }
-//
-// // const Monday = isFriday();
-// //
-// Sentry.isFriday() && console.log("racoon");
