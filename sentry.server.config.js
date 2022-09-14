@@ -3,12 +3,13 @@ import * as Sentry from "@sentry/nextjs";
 // import getConfig from "next/config";
 // import * as simple from "./pages/simple";
 // import * as otherPage from "./pages/level-one/other-page";
+// import { RequestData } from "@sentry/integrations";
 
 // const { publicRuntimeConfig } = getConfig();
 // console.log("runtime config");
 // console.log(publicRuntimeConfig);
 
-console.log("calling Sentry.init()");
+// console.log("calling Sentry.init()");
 Error.stackTraceLimit = Infinity;
 
 // debugger;
@@ -23,10 +24,17 @@ Sentry.init({
     ...defaults.filter(
       (integration) =>
         // filter out Http so its options can be changed below (otherwise, first one wins)
-        integration.name !== "Console" && integration.name !== "Http"
+        integration.name !== "Console"
+      // &&
+      // integration.name !== "Http"
     ),
     // enable HTTP calls tracing
-    new Sentry.Integrations.Http({ tracing: true }),
+    // new Sentry.Integrations.Http({ tracing: true }),
+    // new RequestData({
+    //   include: {
+    //     request: ["data", "headers", "method", "query_string", "url"],
+    //   },
+    // }),
   ],
   beforeSend: (event) => {
     console.log("in server beforeSend!");
@@ -42,8 +50,17 @@ Sentry.init({
     // // return null;
     // console.log(event);
     event.fingerprint = [Date.now()];
+    // event.tags.transaction = "zebra";
     return event;
   },
+});
+
+Sentry.addGlobalEventProcessor((event) => {
+  if (event.type === "transaction") {
+    // debugger;
+  }
+
+  return event;
 });
 
 // debugger;

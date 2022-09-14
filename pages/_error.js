@@ -1,6 +1,13 @@
 import NextErrorComponent from "next/error";
 
 import * as Sentry from "@sentry/nextjs";
+// import * as dataFetchers from "../helpers/dataFetchers.js";
+const otherScript = require("../helpers/other-script.js");
+
+// console.log(Object.getOwnPropertyDescriptors(otherScript));
+// console.log(Object.getOwnPropertyDescriptors(Sentry));
+// console.log(otherScript.cat);
+// console.log(otherScript.newThing);
 
 const CustomErrorComponent = (props) => {
   debugger;
