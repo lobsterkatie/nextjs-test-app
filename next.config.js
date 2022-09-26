@@ -6,10 +6,10 @@
 // const { withSentryConfig } = require("@sentry/nextjs/build/cjs/config");
 const { withSentryConfig } = require("@sentry/nextjs");
 const withBundleAnalyzer = require("@next/bundle-analyzer")();
-const withNodeModuleTranspilation = require("next-transpile-modules")(
-  ["@sentry/nextjs"],
-  { resolveSymlinks: false }
-);
+// const withNodeModuleTranspilation = require("next-transpile-modules")(
+//   ["@sentry/nextjs"],
+//   { resolveSymlinks: false }
+// );
 const path = require("path");
 const webpack = require("webpack");
 
