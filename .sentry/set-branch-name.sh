@@ -6,4 +6,5 @@
 # export BRANCH_NAME=kmclb-fix-eval-serverless-express-import-warnings
 # export BRANCH_NAME=temp-7-20-eval-madness
 # export BRANCH_NAME=temp-9-13-block-end-vercel-test
-export BRANCH_NAME=kmclb-nextjs-enable-flush-in-data-fetchers-wrapper
+# export BRANCH_NAME=kmclb-nextjs-enable-flush-in-data-fetchers-wrapper
+export BRANCH_NAME=temp-9-26-vercel-test-flush-everywhere

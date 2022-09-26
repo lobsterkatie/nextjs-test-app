@@ -16,8 +16,10 @@ export async function getStaticPaths() {
   // await fetch("http://www.nyt.com");
 
   console.log(process.argv.toString());
+  console.log(process.env);
 
   // console.log("x = ", x);
+  console.log("isBuild in getStaticPathsErrorPage:", isBuild());
   if (!isBuild()) {
     console.log("about to throw error");
     const err = new Error("in getStaticPaths for GetStaticPathsErrorPage");
