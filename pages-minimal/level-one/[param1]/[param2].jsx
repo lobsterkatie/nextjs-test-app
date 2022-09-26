@@ -3,6 +3,7 @@
 import * as nextRouter from "next/router";
 import { LoadNewPageLink } from "../../../components/loadnewpagelink";
 import * as Sentry from "@sentry/nextjs";
+export * from "../../../components/loadnewpagelink";
 
 let k = 1;
 

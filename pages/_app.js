@@ -25,7 +25,7 @@ const isServer = typeof window === "undefined";
 
 function MyApp(contextData) {
   const { Component, pageProps, err, router } = contextData;
-  console.log("in my app for", Component.name);
+  // console.log("in my app for", Component.name);
   // console.log("context:");
   // console.log(contextData);
   // console.log(
@@ -36,7 +36,7 @@ function MyApp(contextData) {
   //   router.route,
   //   router.isSSR
   // );
-  // // debugger;
+  // debugger;
   // console.log(isServer ? "" : "components: " + Object.keys(router.components));
   // console.log("\n");
   // if (pageProps.statusCode !== 404) {
@@ -62,6 +62,11 @@ function MyApp(contextData) {
   // console.log("pageProps", pageProps);
   return <Component {...pageProps} />;
 }
+
+MyApp.getInitialProps = (component, context) => {
+  console.log("In getInitialProps for MyApp");
+  return { props: { day: "Monday" } };
+};
 
 // console.log(
 //   "Sentry client defined:",

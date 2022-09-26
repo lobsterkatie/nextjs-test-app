@@ -50,6 +50,7 @@ Sentry.init({
     // // return null;
     // console.log(event);
     event.fingerprint = [Date.now()];
+    // event.transaction = "aardvark";
     // event.tags.transaction = "zebra";
     return event;
   },

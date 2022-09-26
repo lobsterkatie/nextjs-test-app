@@ -6,6 +6,10 @@
 // const { withSentryConfig } = require("@sentry/nextjs/build/cjs/config");
 const { withSentryConfig } = require("@sentry/nextjs");
 const withBundleAnalyzer = require("@next/bundle-analyzer")();
+const withNodeModuleTranspilation = require("next-transpile-modules")(
+  ["@sentry/nextjs"],
+  { resolveSymlinks: false }
+);
 const path = require("path");
 const webpack = require("webpack");
 
@@ -23,6 +27,11 @@ const moduleExports = {
   // },
 
   // output: "standalone",
+
+  staticPageGenerationTimeout: 10000,
+
+  reactStrictMode: true,
+  swcMinify: true,
 
   publicRuntimeConfig: { dogs: "yes", cats: "maybe" },
   // target: "experimental-serverless-trace",
@@ -53,14 +62,24 @@ const moduleExports = {
   },
   sentry: {
     configDir: "sentryConfig",
-    // hideSourceMaps: true,
+    // transpileClientSDK: true,
+    hideSourceMaps: false,
+    experiments: { autoWrapDataFetchers: true },
+    // disableServerWebpackPlugin: true,
+    // disableClientWebpackPlugin: true,
   },
 };
 
-const moduleExportsFunction = (phase, config) => ({
-  ...config,
-  ...moduleExports,
-});
+// const moduleExportsFunction = (phase, config) => ({
+//   ...config.defaults.defaultConfig,
+//   ...moduleExports,
+// });
+const moduleExportsFunction = (phase, config) => {
+  return {
+    // ...config.defaultConfig,
+    ...moduleExports,
+  };
+};
 
 const SentryWebpackPluginOptions = {
   // Additional config options for the Sentry Webpack plugin. Keep in mind that
@@ -91,5 +110,9 @@ module.exports = withSentryConfig(
 );
 
 // module.exports = withBundleAnalyzer(
+//   withSentryConfig(moduleExports, SentryWebpackPluginOptions)
+// );
+
+// module.exports = withNodeModuleTranspilation(
 //   withSentryConfig(moduleExports, SentryWebpackPluginOptions)
 // );

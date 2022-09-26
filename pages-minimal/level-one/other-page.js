@@ -8,7 +8,7 @@ let x = 0;
 let y = 0;
 
 // export default function OtherPage(color) {
-const defaultExport = function OtherPage(color = "blue") {
+const defaultExport = function OtherPage(props) {
   // console.log("in otherPage function");
   const homeURL = "/";
   const router = nextRouter.useRouter();
@@ -27,8 +27,9 @@ const defaultExport = function OtherPage(color = "blue") {
   // }
   return (
     <div>
-      You're now on the other page. Click
-      <LoadNewPageLink href={homeURL}>here</LoadNewPageLink>
+      You're now on the other page. x = {props.x}
+      <br></br>
+      Click <LoadNewPageLink href={homeURL}>here</LoadNewPageLink>
       to go back to the home page.
     </div>
   );
@@ -57,7 +58,7 @@ export async function getStaticProps() {
   // whatever is returned in props ends up as props on the page component (which in
   // our case means as arguments to the function, since this is a functional component)
   return {
-    props: { color: "red", propsFrom: "OtherPage.getStaticProps" },
+    props: { color: "red", propsFrom: "OtherPage.getStaticProps", x },
     revalidate: 1,
   };
 }

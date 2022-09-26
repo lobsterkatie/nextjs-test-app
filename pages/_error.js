@@ -10,7 +10,6 @@ const otherScript = require("../helpers/other-script.js");
 // console.log(otherScript.newThing);
 
 const CustomErrorComponent = (props) => {
-  debugger;
   // people might still have this
   // Sentry.captureUnderscoreErrorException(props);
 

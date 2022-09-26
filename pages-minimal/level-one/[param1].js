@@ -6,12 +6,12 @@ import { LoadNewPageLink } from "../../components/loadnewpagelink";
 import * as Sentry from "@sentry/nextjs";
 import * as routerModule from "next/router";
 
-debugger;
+// debugger;
 
 export default function Param1Page(pageContext) {
   const homeURL = "/";
   const router = useRouter();
-  debugger;
+  // debugger;
   // console.log("I'm in Param1Page");
   return (
     <div>

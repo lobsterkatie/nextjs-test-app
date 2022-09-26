@@ -1,6 +1,7 @@
 import * as Sentry from "@sentry/nextjs";
 
-const handler = async (req, res) => {
+export default async (req, res) => {
+  // const handler = async (req, res) => {
   Sentry.configureScope((scope) => {
     scope.setTag("configureScope", "no error");
   });
@@ -12,4 +13,4 @@ const handler = async (req, res) => {
   });
 };
 
-export default Sentry.withSentry(handler);
+// export default Sentry.withSentry(handler);

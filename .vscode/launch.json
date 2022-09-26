@@ -30,41 +30,12 @@
       "smartStep": false
     },
     {
-      "name": "run `next start`",
-      "type": "pwa-node",
-      "preLaunchTask": "yarn build",
+      "name": "run `next build`",
+      "type": "node",
       "request": "launch",
       "skipFiles": [
         "<node_internals>/**",
-        "**/node_modules/tslib/**/*",
-        "**/syncpromise.js"
-      ],
-      "runtimeArgs": ["--preserve-symlinks", "--trace-warnings"],
-      "program": "${workspaceFolder}/node_modules/.bin/next",
-      "args": ["start", "-p", "3001"],
-      "sourceMaps": true,
-      "outFiles": [
-        "${workspaceFolder}/**/*.js",
-        "!${workspaceFolder}/node_modules/**/*.js",
-        "${workspaceFolder}/node_modules/@sentry/**/*.js",
-        "${workspaceFolder}/node_modules/next/**/*.js",
-      ],
-      "resolveSourceMapLocations": [
-        "${workspaceFolder}/**",
-        "!**/node_modules/**",
-        "${workspaceFolder}/node_modules/next/**",
-        "${workspaceFolder}/node_modules/@sentry/*/dist/**/*"
-      ],
-      "internalConsoleOptions": "openOnSessionStart",
-      // "trace": true
-    },
-    {
-      "name": "run `next build`",
-      "type": "pwa-node",
-      "request": "launch",
-      "skipFiles": [
-        // "<node_internals>/**",
-        "${workspaceFolder}/node_modules/tslib/**"
+        // "${workspaceFolder}/node_modules/tslib/**"
       ],
       "smartStep": false,
       "runtimeArgs": ["--preserve-symlinks", "--trace-warnings"],
@@ -84,6 +55,36 @@
       ],
       "internalConsoleOptions": "openOnSessionStart",
       // "outputCapture": "std"
-    }
+    },
+    {
+      "name": "run `next start`",
+      "type": "pwa-node",
+      "preLaunchTask": "yarn build",
+      "request": "launch",
+      // "skipFiles": [
+      //   "<node_internals>/**",
+      //   "**/node_modules/tslib/**/*",
+      //   "**/syncpromise.js"
+      // ],
+      "smartStep": false,
+      "runtimeArgs": ["--preserve-symlinks", "--trace-warnings"],
+      "program": "${workspaceFolder}/node_modules/.bin/next",
+      "args": ["start", "-p", "3001"],
+      "sourceMaps": true,
+      "outFiles": [
+        "${workspaceFolder}/**/*.js",
+        "!${workspaceFolder}/node_modules/**/*.js",
+        "${workspaceFolder}/node_modules/@sentry/**/*.js",
+        "${workspaceFolder}/node_modules/next/**/*.js",
+      ],
+      "resolveSourceMapLocations": [
+        "${workspaceFolder}/**",
+        "!**/node_modules/**",
+        "${workspaceFolder}/node_modules/next/**",
+        "${workspaceFolder}/node_modules/@sentry/*/build/**/*"
+      ],
+      "internalConsoleOptions": "openOnSessionStart",
+      // "trace": true
+    },
   ]
 }

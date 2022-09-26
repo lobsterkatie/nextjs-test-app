@@ -205,6 +205,20 @@ export default function Home() {
               Go to /boring/getServerSidePropsError.
             </a>
           </button>
+          <button>
+            <Link href="/boring/getServerSidePropsError/[getServerSidePropsErrorParam]">
+              <a>
+                Use a Link to go to
+                /boring/getServerSidePropsError/[getServerSidePropsErrorParam].
+              </a>
+            </Link>
+          </button>
+          <button>
+            <a href="/boring/getServerSidePropsError/[getServerSidePropsErrorParam]">
+              Go to
+              /boring/getServerSidePropsError/[getServerSidePropsErrorParam].
+            </a>
+          </button>
 
           <p>getStaticPaths</p>
           <button>

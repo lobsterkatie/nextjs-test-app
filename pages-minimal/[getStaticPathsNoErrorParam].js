@@ -21,9 +21,11 @@ export default function GetStaticPathsNoErrorPage(
 export async function getStaticPaths() {
   console.log("in getStaticPaths for GetStaticPathsNoErrorPage");
 
+  const randomNumber = Math.floor(Math.random() * 100);
+
   // whatever is returned in props tells it which paths to pre-render
   return {
-    paths: [{ params: { getStaticPathsNoErrorParam: "dogs" } }],
+    paths: [{ params: { getStaticPathsNoErrorParam: "dogs" + randomNumber } }],
     fallback: "blocking",
   };
 }
@@ -31,6 +33,8 @@ export async function getStaticPaths() {
 // only called on server, before rendering a static page
 export async function getStaticProps() {
   console.log("in getStaticProps for GetStaticPathsNoErrorPage");
+  console.log(new Error().stack);
+  debugger;
 
   // whatever is returned in props ends up as props on the page component (which in
   // our case means as arguments to the function, since this is a functional component)
