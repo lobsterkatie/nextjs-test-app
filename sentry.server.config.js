@@ -12,6 +12,8 @@ import * as Sentry from "@sentry/nextjs";
 // console.log("calling Sentry.init()");
 Error.stackTraceLimit = Infinity;
 
+console.log("NEXT_PHASE:", process.env.NEXT_PHASE);
+
 // debugger;
 
 Sentry.init({
