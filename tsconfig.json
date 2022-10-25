@@ -26,7 +26,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "pages/[vegetable]/[nestedVeggieParam]/yo.js", "pages/meh/[rockParam]/bare.js", "pages/meh/hola.js", "pages/things.js"  ],
   "exclude": [
     "node_modules",
     "sentry-javascript"

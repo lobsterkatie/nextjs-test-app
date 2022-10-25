@@ -20,8 +20,8 @@ export default function GetStaticPropsErrorPage({ color } = { color: "blue" }) {
 
 // // only called on server, before rendering a static page
 async function localGetStaticProps() {
-  console.log("in getStaticProps for GetStaticPropsErrorPage");
-  console.log("isBuild in GetStaticPropsErrorPage:", isBuild());
+  // console.log("in getStaticProps for GetStaticPropsErrorPage");
+  // console.log("isBuild in GetStaticPropsErrorPage:", isBuild());
   // x = x + 1;
   // // grab data from somewhere
   // await fetch("http://www.nyt.com");

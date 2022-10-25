@@ -31,8 +31,10 @@
     },
     {
       "name": "run `next build`",
-      "type": "node",
+      "type": "pwa-node",
       "request": "launch",
+      "preLaunchTask": "Remove old built files",
+      // "preLaunchTask": "Remove temporary files",
       "skipFiles": [
         "<node_internals>/**",
         // "${workspaceFolder}/node_modules/tslib/**"
@@ -59,7 +61,7 @@
     {
       "name": "run `next start`",
       "type": "pwa-node",
-      "preLaunchTask": "yarn build",
+      "preLaunchTask": "Run yarn build",
       "request": "launch",
       // "skipFiles": [
       //   "<node_internals>/**",

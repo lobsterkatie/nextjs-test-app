@@ -1,13 +1,30 @@
 {
 	"version": "2.0.0",
 	"tasks": [
+		// {
+		// 	"type": "npm",
+		// 	"script": "build",
+		// 	"group": "build",
+		// 	"problemMatcher": [],
+		// 	"label": "Run yarn build",
+		// 	"detail": "next build"
+		// },
 		{
-			"type": "npm",
-			"script": "build",
-			"group": "build",
-			"problemMatcher": [],
-			"label": "yarn build",
-			"detail": "next build"
-		}
+			"label": "Run yarn build",
+			"type": "shell",
+			"command": "yarn build",
+			"dependsOn": "Remove old built files"
+			// "dependsOn": "Remove temporary files"
+		},
+		{
+			"label": "Remove temporary files",
+			"type": "shell",
+			"command": "rm -rf pages/**/temp0* || true"
+		},
+		{
+			"label": "Remove old built files",
+			"type": "shell",
+			"command": "rm -rf .next || true"
+		},
 	]
 }

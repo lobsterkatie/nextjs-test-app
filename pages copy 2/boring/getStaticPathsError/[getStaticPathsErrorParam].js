@@ -10,16 +10,16 @@ export default function GetStaticPropsErrorPage({ color } = { color: "blue" }) {
 
 // only called on server, during build or getStaticProps revalidation, so it knows which pages to pre-render
 export async function getStaticPaths() {
-  console.log("in getStaticPaths for GetStaticPathsErrorPage");
+  // console.log("in getStaticPaths for GetStaticPathsErrorPage");
   // x = x + 1;
   // // grab data from somewhere
   // await fetch("http://www.nyt.com");
 
-  console.log(process.argv.toString());
-  console.log(process.env);
+  // console.log(process.argv.toString());
+  // console.log(process.env);
 
   // console.log("x = ", x);
-  console.log("isBuild in getStaticPathsErrorPage:", isBuild());
+  // console.log("isBuild in getStaticPathsErrorPage:", isBuild());
   if (!isBuild()) {
     console.log("about to throw error");
     const err = new Error("in getStaticPaths for GetStaticPathsErrorPage");

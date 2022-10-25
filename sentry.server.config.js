@@ -12,13 +12,13 @@ import * as Sentry from "@sentry/nextjs";
 // console.log("calling Sentry.init()");
 Error.stackTraceLimit = Infinity;
 
-console.log("NEXT_PHASE:", process.env.NEXT_PHASE);
+// console.log("\nNEXT_PHASE in sentry.server.config.js:", process.env.NEXT_PHASE);
 
 // debugger;
 
 Sentry.init({
   dsn: "https://c3d3206b71704aebbe717d5d4dbfe0bd@o87286.ingest.sentry.io/5397699",
-  debug: true,
+  // debug: true,
   // release: "off.leash.trail",
   tracesSampleRate: 1,
   autoSessionTracking: false,
@@ -60,7 +60,8 @@ Sentry.init({
 
 Sentry.addGlobalEventProcessor((event) => {
   if (event.type === "transaction") {
-    // debugger;
+    console.log(event.contexts.trace);
+    debugger;
   }
 
   return event;

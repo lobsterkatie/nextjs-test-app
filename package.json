@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev -p 3001",
     "build": "rm -rf .next && next build --debug",
+    "build:local": "rm -rf .next && next build --debug",
     "start": "next start -p 3001",
     "clean": "rm -rf .next && rm -rf node_modules && yarn",
     "sdk:reset": "yarn clean && yarn sdk:sync",

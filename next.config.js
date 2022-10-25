@@ -22,9 +22,9 @@ const moduleExports = {
   // in next 11, to force webpack 4
   // webpack5: false,
 
-  // experimental: {
-  //   outputStandalone: true,
-  // },
+  experimental: {
+    outputStandalone: true,
+  },
 
   // output: "standalone",
 
@@ -64,7 +64,8 @@ const moduleExports = {
     configDir: "sentryConfig",
     // transpileClientSDK: true,
     hideSourceMaps: false,
-    experiments: { autoWrapDataFetchers: true },
+    // experiments: { autoWrapDataFetchers: true },
+    autoInstrumentServerFunctions: true,
     // disableServerWebpackPlugin: true,
     // disableClientWebpackPlugin: true,
   },

@@ -21,9 +21,9 @@ MyApp.getInitialProps = async (appContext) => {
   // calls page's `getInitialProps` and fills `appProps.pageProps`
   const appProps = await App.getInitialProps(appContext);
 
-  console.log("Called _app.tsx getInitialProps", {
-    parameterizedRoute: appContext.ctx.pathname,
-  });
+  // console.log("Called _app.tsx getInitialProps", {
+  //   parameterizedRoute: appContext.ctx.pathname,
+  // });
 
   return { ...appProps };
 };

@@ -19,7 +19,7 @@ export default function GetStaticPropsNoErrorPage(
 
 // only called on server, before rendering a static page
 export async function getStaticProps() {
-  console.log("in getStaticProps for GetStaticPropsNoErrorPage");
+  // console.log("in getStaticProps for GetStaticPropsNoErrorPage");
 
   // whatever is returned in props ends up as props on the page component (which in
   // our case means as arguments to the function, since this is a functional component)

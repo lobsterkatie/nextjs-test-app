@@ -27,5 +27,3 @@ const handler = async (req, res) => {
 };
 
 export default Sentry.withSentry(handler);
-
-export const dogs = "yes";

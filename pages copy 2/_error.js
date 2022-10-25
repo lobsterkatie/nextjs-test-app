@@ -17,6 +17,7 @@ const CustomErrorComponent = (props) => {
 };
 
 CustomErrorComponent.getInitialProps = async (contextData) => {
+  console.log("In CustomErrorComponent.getInitialProps");
   debugger;
   // In case this is running in a serverless function, await this in order to give Sentry
   // time to send the error before the lambda exits
